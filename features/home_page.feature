@@ -1,6 +1,6 @@
 Feature: Home Page
   In order to confirm the basic application is working
-  As a developer
+  As a member of the project
   I want to confirm the home page is functioning
 
 Scenario: I do not see 'stinky poo'
