@@ -2,4 +2,7 @@ language: ruby
 rvm:
   - "2.4.1"
 script:
-  - RAILS_ENV=test bundle exec cucumber
+  - bundle exec rake cucumber
+before_script:
+  - psql -c 'create database cont_test' -U postgres
+  - RAILS_ENV=test bundle exec rake --trace db:migrate
