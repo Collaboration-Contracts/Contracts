@@ -14,7 +14,7 @@ Collaboration Contracts
 
 ### How to run this application
 ```
-1. $ git clone repo_link (http or ssh)
+1. $ git clone https://github.com/Collaboration-Contracts/Contracts.git
 2. $ cd Contracts/
 3. $ bundle install
 4. $ bundle exec rake db:create && bundle exec rake db:migrate` # to create your local databases
