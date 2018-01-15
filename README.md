@@ -5,3 +5,21 @@ Coveralls: [![Coverage Status](https://coveralls.io/repos/github/Collaboration-C
 
 # Contracts
 Collaboration Contracts
+
+### Some necessary system reqs
+1. Make sure you have [Ruby installed](https://www.ruby-lang.org/en/documentation/installation/) properly
+2. Make sure you have [Bundler installed](http://bundler.io/)
+3. Install the Rails gem
+
+
+### How to run this application
+```
+1. $ git clone repo_link (http or ssh)
+2. $ cd Contracts/
+3. $ bundle install
+4. $ bundle exec rake db:create && bundle exec rake db:migrate` # to create your local databases
+5. $ rails s # and then visit http://127.0.0.1:3000 to visit the application
+```
+
+### How to execute Cucumber tests
+1. `bundle exec rake cucumber`
