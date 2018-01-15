@@ -6,6 +6,8 @@ Coveralls: [![Coverage Status](https://coveralls.io/repos/github/Collaboration-C
 # Contracts
 Collaboration Contracts
 
+## Getting Started with this Project
+
 ### Some necessary system reqs
 1. Make sure you have [Ruby installed](https://www.ruby-lang.org/en/documentation/installation/) properly
 2. Make sure you have [Bundler installed](http://bundler.io/)
@@ -23,3 +25,7 @@ Collaboration Contracts
 
 ### How to execute Cucumber tests
 1. `bundle exec rake cucumber`
+
+## Committing to this Project
+
+To begin with, make sure you are writing a [good commit message](https://github.com/Collaboration-Contracts/Contracts/wiki/Writing-Good-Commit-Messages).
