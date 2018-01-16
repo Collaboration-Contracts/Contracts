@@ -25,7 +25,3 @@ Collaboration Contracts
 
 ### How to execute Cucumber tests
 1. `bundle exec rake cucumber`
-
-## Committing to this Project
-
-To begin with, make sure you are writing a [good commit message](https://github.com/Collaboration-Contracts/Contracts/wiki/Writing-Good-Commit-Messages).
