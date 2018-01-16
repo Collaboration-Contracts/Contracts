@@ -3,6 +3,7 @@ rvm:
   - "2.4.1"
 script:
   - bundle exec rake cucumber
+  - bundle exec rspec
 before_script:
   - psql -c 'create database cont_test' -U postgres
   - RAILS_ENV=test bundle exec rake --trace db:migrate
