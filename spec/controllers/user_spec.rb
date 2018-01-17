@@ -14,9 +14,16 @@ RSpec.describe UsersController do
   end
 
   describe "Post create" do
+    before do
+      @params = { :username => "bono" }
+    end
     it "creates a new user" do
-      params = { :username => "bono" }
-      expect{ post :create, params: params }.to change{ User.count }.by(1)
+      expect{ post :create, params: @params }.to change{ User.count }.by(1)
+    end
+    it "redirects to contract dashboard" do
+      post :create, params: @params
+      expect(response).to redirect_to(dashboard_path)
     end
   end
+  
 end
