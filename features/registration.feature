@@ -2,12 +2,10 @@ Feature:	In order to prevent other people from seeing my contracts
   As a visitor to CC
   I want to securely login to my account
 
-@wip
 Scenario: register with username
 	When I register with a username
   Then I have an account
 
-@wip
 Scenario: register with username and password
 	When I register with a username and password
 	Then I have an account

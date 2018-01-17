@@ -15,15 +15,28 @@ RSpec.describe UsersController do
 
   describe "Post create" do
     before do
-      @params = { :username => "bono" }
+      @params = { :user => {:username => "bono" }}
+      @params_w_pword = { :user => {:username => "bono", :password_digest => "password" }}
     end
-    it "creates a new user" do
-      expect{ post :create, params: @params }.to change{ User.count }.by(1)
+    context "without a password" do
+      it "creates a new user" do
+        expect{ post :create, params: @params }.to change{ User.count }.by(1)
+      end
+      it "redirects to contract dashboard" do
+        post :create, params: @params
+        expect(response).to redirect_to(dashboard_path)
+      end
     end
-    it "redirects to contract dashboard" do
-      post :create, params: @params
-      expect(response).to redirect_to(dashboard_path)
+
+    context "with a password" do
+      it "creates a new user" do
+        expect{ post :create, params: @params_w_pword }.to change{ User.count }.by(1)
+      end
+      it "redirects to contract dashboard" do
+        post :create, params: @params_w_pword
+        expect(response).to redirect_to(dashboard_path)
+      end
     end
   end
-  
+
 end
