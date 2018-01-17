@@ -8,7 +8,7 @@ Then("I have an account") do
   expect(page).to have_content "Collaboration Contracts"
 end
 
-When("I register with a username and password") do
+When("I register with a username and with a password") do
   visit register_path
   fill_in 'username', with: "Bono"
   fill_in 'password_digest', with: "password"

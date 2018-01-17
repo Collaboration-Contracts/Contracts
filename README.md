@@ -1,6 +1,7 @@
 Travis:
 [![Build Status](https://travis-ci.org/Collaboration-Contracts/Contracts.svg?branch=master)](https://travis-ci.org/Collaboration-Contracts/Contracts)
 
+
 Coveralls: [![Coverage Status](https://coveralls.io/repos/github/Collaboration-Contracts/Contracts/badge.svg?branch=master)](https://coveralls.io/github/Collaboration-Contracts/Contracts?branch=master)
 
 # Contracts
@@ -24,4 +25,7 @@ Collaboration Contracts
 ```
 
 ### How to execute Cucumber tests
-1. `bundle exec rake cucumber`
+1. `bundle exec rake cucumber` - runs completed tests that should pass
+2. `bundle exec rake cucumber:wip` - runs tests under development and may not pass (limit 3)
+3. `bundle exec rake cucumber:devready` - runs tests that are defined but not developed and should not pass
+4. `bundle exec rake cucumber:all` - runs all tests regardless of tags
