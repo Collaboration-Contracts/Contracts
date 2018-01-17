@@ -12,7 +12,8 @@ class UsersController < ActionController::Base
   end
 
   private
-  def user_params()
-    params.permit(:username)
+  
+  def user_params
+    params.require(:user).permit(:username)
   end
 end

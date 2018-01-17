@@ -7,6 +7,6 @@ Scenario: I do not see 'stinky poo'
   Given I am on the homepage
   Then I do not see the text 'stinky poo'
 
-Scenario: I do see 'Hello world'
+Scenario: I do see 'Collaboration Contracts'
   Given I am on the homepage
-  Then I see the text 'Hello world'
+  Then I see the text 'Collaboration Contracts'
