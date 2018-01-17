@@ -1,6 +1,7 @@
 <%= form_for @user do |f| %>
   <%= f.label :username %>
   <%= f.text_field :username, id: 'username' %>
+  <%= f.label :password_digest, "Password (optional)" %>
   <%= f.text_field :password_digest, id: 'password_digest' %>
   <%= f.submit %>
 <% end %>
