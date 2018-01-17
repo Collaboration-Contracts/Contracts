@@ -1,3 +1,5 @@
+.gitconfig
+.vimrc
 *.rbc
 capybara-*.html
 .rspec
