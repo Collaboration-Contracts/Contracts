@@ -8,7 +8,7 @@ Feature:	In order to prevent other people from seeing my contracts
 # 	When I login with that username
 # 	Then I view the CC dashboard
 
-@devready
+@wip
 Scenario: login with username and password
 	When I login with a registered username and password
 	Then I view the CC dashboard
