@@ -15,10 +15,23 @@ RSpec.describe UsersController do
 
   describe "Post create" do
     before do
-      @params = { :user => {:username => "bono" }}
-      @params_w_pword = { :user => {:username => "bono", :password_digest => "password" }}
+      @params = { :user => {:username => "bono", :password_digest => "password" }}
+      @params_wo_password = { :user => {:username => "bono" }}
+      @params_wo_username = { :user => { :password_digest => "password" }}
     end
-    context "without a password" do
+
+    # REMOVED - changed schema to require password
+    # context "without a password" do
+    #   it "creates a new user" do
+    #     expect{ post :create, params: @params }.to change{ User.count }.by(1)
+    #   end
+    #   it "redirects to contract dashboard" do
+    #     post :create, params: @params
+    #     expect(response).to redirect_to(dashboard_path)
+    #   end
+    # end
+
+    context "with a password" do
       it "creates a new user" do
         expect{ post :create, params: @params }.to change{ User.count }.by(1)
       end
@@ -28,13 +41,25 @@ RSpec.describe UsersController do
       end
     end
 
-    context "with a password" do
-      it "creates a new user" do
-        expect{ post :create, params: @params_w_pword }.to change{ User.count }.by(1)
+    context "without a username, with a password" do
+      it "does not create a new user" do
+        expect { post :create, params: @params_wo_username}.to change{ User.count }.by(0)
       end
-      it "redirects to contract dashboard" do
-        post :create, params: @params_w_pword
-        expect(response).to redirect_to(dashboard_path)
+
+      it "redirects to the register page" do
+        post :create, params: @params_wo_username
+        expect(response).to redirect_to(register_path)
+      end
+    end
+
+    context "with a username, without a password" do
+      it "does not create a new user" do
+        expect { post :create, params: @params_wo_password}.to change{ User.count }.by(0)
+      end
+
+      it "redirects to the register page" do
+        post :create, params: @params_wo_password
+        expect(response).to redirect_to(register_path)
       end
     end
   end

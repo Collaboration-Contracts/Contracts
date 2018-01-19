@@ -7,13 +7,16 @@ class UsersController < ActionController::Base
 
   def create
     @user = User.new(user_params)
-    @user.save
-    redirect_to dashboard_path
+    if @user.save
+      redirect_to dashboard_path
+    else
+      redirect_to register_path
+    end
   end
 
   private
-  
+
   def user_params
-    params.require(:user).permit(:username)
+    params.require(:user).permit(:username, :password_digest)
   end
 end
