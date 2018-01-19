@@ -1,4 +1,4 @@
-class ContractsController < ActionController::Base
+class ContractsController < ApplicationController
   protect_from_forgery with: :exception
 
   def index

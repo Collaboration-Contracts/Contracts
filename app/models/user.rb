@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-  validates_presence_of :username
+  validates_presence_of :username, :password_digest
 end

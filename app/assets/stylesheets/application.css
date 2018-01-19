@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+
+.register_form {
+  width: 250px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.register_form * * {
+  margin: 10px 10px 10px 10px;
+}
+
+.register_form .submit_btn {
+  position: absolute;
+  right: 0;
+}
