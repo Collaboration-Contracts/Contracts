@@ -1,7 +1,15 @@
-<%= form_for @user do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username, id: 'username' %>
-  <%= f.label :password_digest, "Password (optional)" %>
-  <%= f.text_field :password_digest, id: 'password_digest' %>
-  <%= f.submit %>
-<% end %>
+<div class="register_form">
+  <%= form_for @user do |f| %>
+  <div class="username">
+    <%= f.label :username %>
+    <%= f.text_field :username, id: 'username' %>
+  </div>
+  <div class="password">
+    <%= f.label :password_digest, "Password" %>
+    <%= f.text_field :password_digest, id: 'password_digest', type: 'password' %>
+  </div>
+  <div class="submit_btn">
+    <%= f.submit "Register" %>
+  </div>
+  <% end %>
+</div>
