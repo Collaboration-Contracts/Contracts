@@ -21,8 +21,11 @@ When("I register without a username and with a password") do
   click_button("Register")
 end
 
-Then("I view the Registration form") do
+Then("I am not registered") do
   expect(User.find_by(username: "Bono")).to be_falsey
+end
+
+And("I view the Registration form") do
   find("form#new_user")
 end
 
