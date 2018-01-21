@@ -1,7 +1,7 @@
 When("I login with a registered username and password") do
   visit login_path
   fill_in 'username', with: "Bono"
-  fill_in 'password_digest', with: "password"
+  fill_in 'password', with: "password"
   click_button("Login")
 end
 
