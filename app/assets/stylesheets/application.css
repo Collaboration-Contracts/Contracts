@@ -14,18 +14,33 @@
  *= require_self
  */
 
-.register_form {
+
+ .flash_message {
+   text-align: center;
+ }
+
+ .danger {
+   color: red;
+ }
+
+ .excl {
+  background-color: black;
+  padding: 6px;
+  border-radius: 100%;
+ }
+
+.register_form, .login_form {
   width: 300px;
   margin: 0 auto;
   position: relative;
   display: flex;
   justify-content: center;
 }
-.register_form * * {
+.register_form * *, .login_form * * {
   margin: 10px 10px 10px 10px;
 }
 
-.register_form .submit_btn {
+.register_form .submit_btn, .login_form .submit_btn {
   position: absolute;
   right: 0;
 }
