@@ -15,9 +15,9 @@ RSpec.describe UsersController do
 
   describe "Post create" do
     before do
-      @params = { :user => {:username => "bono", :password_digest => "password" }}
+      @params = { :user => {:username => "bono", :password => "password" }}
       @params_wo_password = { :user => {:username => "bono" }}
-      @params_wo_username = { :user => { :password_digest => "password" }}
+      @params_wo_username = { :user => { :password => "password" }}
     end
 
     # REMOVED - changed schema to require password

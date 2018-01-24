@@ -11,18 +11,21 @@ end
 When("I register with a username and with a password") do
   visit register_path
   fill_in 'username', with: "Bono"
-  fill_in 'password_digest', with: "password"
+  fill_in 'password', with: "password"
   click_button("Register")
 end
 
 When("I register without a username and with a password") do
   visit register_path
-  fill_in 'password_digest', with: "password"
+  fill_in 'password', with: "password"
   click_button("Register")
 end
 
-Then("I view the Registration form") do
+Then("I am not registered") do
   expect(User.find_by(username: "Bono")).to be_falsey
+end
+
+And("I view the Registration form") do
   find("form#new_user")
 end
 

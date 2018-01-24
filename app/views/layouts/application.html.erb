@@ -10,6 +10,9 @@
 
   <body>
     <h1>Collaboration Contracts</h1>
+    <% flash.each do |k,v| %>
+      <p class="<%= k %> flash_message"><span class="excl">&#10071;</span> <%= v %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>

@@ -1,5 +1,5 @@
-<div class="register_form">
-  <%= form_for @user do |f| %>
+<div class="login_form">
+  <%= form_for(:session, url: login_path) do |f| %>
   <div class="username">
     <%= f.label :username %>
     <%= f.text_field :username, id: 'username' %>
@@ -9,7 +9,7 @@
     <%= f.text_field :password, id: 'password', type: 'password' %>
   </div>
   <div class="submit_btn">
-    <%= f.submit "Register" %>
+    <%= f.submit "Login" %>
   </div>
   <% end %>
 </div>
