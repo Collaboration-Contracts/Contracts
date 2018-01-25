@@ -4,45 +4,60 @@ Feature:	In order to be able to save and work with my contracts
 
 #some of these scenarios should break once we require a username to be valid
 # since the step defs insert "Bono" which doesn't meet the new criteria
+@dev_ready
   Scenario: register with username and password
-	  When I register with a username and with a password
+	  Given I enter a username
+    And I enter a password
+    When I register
 	  Then I have an account
 
-  Scenario: don't register without a username and with a password
-    When I register without a username and with a password
-    Then I am not registered
+@dev_ready
+  Scenario: no account without a username and with a password
+    Given I do not enter a username
+    And I enter a password
+    When I register
+    Then I do not have an account
 	  And I view the Registration form
 
-  Scenario: don’t register with a username and without a password
-    When I register with a username and without a password
-    Then I am not registered
+@dev_ready
+  Scenario: no account with a username and without a password
+    Given I enter a username
+    And I do not enter a password
+    When I register
+    Then I do not have an account
 	  And I view the Registration form
 
 @dev_ready
   Scenario: register with valid username
-    When I register with a valid username and a password
-      | valid_username |
-      | CareBear       |
-      | Bond007        |
-      | 8675309        |
-	  Then I have an account
+    Given I enter a valid username
+      | CareBear             |
+      | Bond007              |
+      | 8675309              |
+      | A1B2C3               |
+      | A1B2C3D4E5F6G7H8I9J0 |
+    And I enter a password
+	  When I register
+    Then I have an account
 
 @dev_ready
   Scenario: don't register with invalid username
-    When I register with an invalid username and a password
-      | invalid_username       |
+    Given I enter an invalid username
       | dog                    |
       | GrandMasterFunkMeister |
       | I.am.batman.           |
-    Then I am not registered
-  	And I view the Registration form
+    And I enter a password
+    When I register
+  	Then I do not have an account
+    And I view the Registration form
     And I see an invalid username error message
 
 @dev_ready
   Scenario: don't register if username already exists
-    Given a username exists
-    When I register with an existing username and a password
-    Then I am not registered
+    Given the username 'CareBear' exists
+    And I enter the username 'CareBear'
+    And I enter a password
+    When I register
+    Then I do not have an account
     And I view the Registration form
     And I see an existing username error message
 
