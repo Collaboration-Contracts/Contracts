@@ -8,9 +8,18 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(col) }
   end
 
+  it { should validate_length_of(:username).is_at_least(MIN_USERNAME_LENGTH)}
+  it { should validate_length_of(:username).is_at_most(MAX_USERNAME_LENGTH)}
+
+  it do
+    User.create({username: "TheEdge", password: "password"})
+    should validate_uniqueness_of(:username) 
+  end
+
+
   describe "password encryption" do
     before do
-      @user = User.create({username: "Bono", password: "password"})
+      @user = User.create({username: "TheEdge", password: "password"})
     end
 
     it "encrypts given password" do

@@ -15,11 +15,11 @@ RSpec.describe SessionsController do
   # This is the post 'login' route
   describe "Post create" do
     before do
-      @params = { :session => {:username => "bono", :password => "password" }}
-      @params_wo_password = { :session => {:username => "bono" }}
+      @params = { :session => {:username => "TheEdge", :password => "password" }}
+      @params_wo_password = { :session => {:username => "TheEdge" }}
       @params_wo_username = { :session => { :password => "password" }}
       @wrong_username = { :session => {:username => "edge", :password => "password" }}
-      @wrong_password = { :session => {:username => "bono", :password => "not_password" }}
+      @wrong_password = { :session => {:username => "TheEdge", :password => "not_password" }}
       @user = User.create(@params[:session])
     end
 

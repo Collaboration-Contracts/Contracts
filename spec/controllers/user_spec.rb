@@ -15,8 +15,8 @@ RSpec.describe UsersController do
 
   describe "Post create" do
     before do
-      @params = { :user => {:username => "bono", :password => "password" }}
-      @params_wo_password = { :user => {:username => "bono" }}
+      @params = { :user => {:username => "TheEdge", :password => "password" }}
+      @params_wo_password = { :user => {:username => "TheEdge" }}
       @params_wo_username = { :user => { :password => "password" }}
     end
 

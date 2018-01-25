@@ -1,0 +1,37 @@
+.register_form {
+  width: 300px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.register_form * *{
+  margin: 10px 10px 10px 10px;
+}
+
+.register_form .submit_btn {
+  position: absolute;
+  right: 0;
+}
+
+
+.tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    background-color: white;
+    border: 2px solid black;
+    bottom: 100px;
+    right: -100px;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+
+
+#username:focus ~ .tooltiptext {
+    visibility: visible;
+}
