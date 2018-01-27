@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to dashboard_path
     else
-      flash[:danger] = @user.full_error_messages
+      flash[:danger] = @user.custom_error_messages
       redirect_to register_path
     end
   end

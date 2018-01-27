@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'user_helper'
+require 'helpers/user_helper'
 
 RSpec.describe User, type: :model do
 
@@ -10,15 +10,8 @@ RSpec.describe User, type: :model do
   end
 
 # test the length validations for username
-  it { should validate_length_of(:username).
-       is_at_least(MIN_USERNAME_LENGTH).
-       with_message(INVALID_USERNAME)
-     }
-
-  it { should validate_length_of(:username).
-       is_at_most(MAX_USERNAME_LENGTH).
-       with_message(INVALID_USERNAME)
-     }
+  it { should validate_length_of(:username).is_at_least(MIN_USERNAME_LENGTH) }
+  it { should validate_length_of(:username).is_at_most(MAX_USERNAME_LENGTH) }
 
 # test a list of presumably valid usernames
   VALID_USERNAME_ARRAY.each do |username|

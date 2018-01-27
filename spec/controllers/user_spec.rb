@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'user_helper'
+require 'helpers/user_helper'
 
 # methods like #post_user_params, #fail_and_redirect, #create_valid_user
 # all come from user_helper.rb
@@ -32,7 +32,8 @@ RSpec.describe UsersController, type: :controller do
       INVALID_USERNAME_ARRAY.each do |username|
         it "does not create a new user: #{username}" do
           post_user_params(username, 'password')
-          expect { response }.to change{ User.count }.by(0)
+          expect(User.count).to eq(0)
+          expect(User.find_by(username: username)).to be_falsey
         end
 
         it "sets the flash message for invalid username" do
@@ -64,12 +65,12 @@ RSpec.describe UsersController, type: :controller do
 
     context "without a username, with a password" do
       before { post_user_params(nil, 'password') }
-      fail_and_redirect
+      fail_and_redirect(nil)
     end
 
     context "with a username, without a password" do
       before { post_user_params("TheEdge", nil) }
-      fail_and_redirect
+      fail_and_redirect("TheEdge")
     end
   end
 
