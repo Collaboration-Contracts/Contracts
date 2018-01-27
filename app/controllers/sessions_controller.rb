@@ -12,7 +12,6 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to dashboard_path
     else
-      # If user's login doesn't work, send them back to the login form
       assign_login_flash_message
       flash[:danger] = [@notice]
       redirect_to login_path
@@ -26,12 +25,8 @@ class SessionsController < ApplicationController
   end
 
   def assign_login_flash_message
-    if session_params[:username].blank? && session_params[:password].blank?
+    if session_params[:username].blank? || session_params[:password].blank?
       @notice = BLANK_LOGIN_PARAMS
-    elsif session_params[:username].blank?
-      @notice = BLANK_USERNAME
-    elsif session_params[:password].blank?
-      @notice = BLANK_PASSWORD
     else
       @notice = INVALID_LOGIN
     end

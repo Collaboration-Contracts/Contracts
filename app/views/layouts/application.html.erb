@@ -6,12 +6,13 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   </head>
 
   <body>
     <h1>Collaboration Contracts</h1>
     <% flash[:danger] && flash[:danger].each do |msg| %>
-      <p class="danger flash_message"><span class="excl">&#10071;</span> <%= msg %></p>
+      <p class="danger flash_message"><i class="fas fa-exclamation-circle fa-2x"></i><%= msg %></p>
     <% end %>
     <%= yield %>
   </body>

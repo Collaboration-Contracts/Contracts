@@ -17,15 +17,18 @@
 
  .flash_message {
    text-align: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
  }
 
  .danger {
-   color: red;
+   font-weight: bold;
+   color: FireBrick;
  }
 
 /* css for error exclamation point */
- .excl {
-  background-color: black;
-  padding: 6px;
-  border-radius: 100%;
+ .fa-exclamation-circle {
+  color: black;
+  margin: 3px;
  }
