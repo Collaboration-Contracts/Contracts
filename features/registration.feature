@@ -58,7 +58,7 @@ Feature:	In order to be able to save and work with my contracts
 #these scenarios can replace the 'don't register w/ invalid username"
 # and "if username already exists" scenarios
 # once we add the error messages
-#@dev_ready
+#@devready
   # Scenario: don't register & error with invalid username
   #   Given I enter an invalid username
   #     | dog                    |
@@ -70,7 +70,7 @@ Feature:	In order to be able to save and work with my contracts
   #   And I view the Registration form
   #   And I see an invalid username error message
 
-  # @dev_ready
+  # @devready
   #   Scenario: don't register & error if username already exists
   #     Given the username 'CareBear' exists
   #     And I enter the username 'CareBear'
