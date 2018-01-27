@@ -8,8 +8,15 @@ class User < ApplicationRecord
   has_secure_password
 
   def custom_error_messages
-    if !username.length.between?(MIN_USERNAME_LENGTH,MAX_USERNAME_LENGTH) || !username.match(VALID_USERNAME_CHARS)
-      return [INVALID_USERNAME]
+    messages = []
+    if username.length == 0 || password.nil?
+      messages << BLANK_REGISTER_PARAMS
+    elsif !username.length.between?(MIN_USERNAME_LENGTH,MAX_USERNAME_LENGTH) || !username.match(VALID_USERNAME_CHARS)
+      messages << INVALID_USERNAME
     end
+    if User.find_by(username: username)
+      messages << EXISTING_USERNAME
+    end
+    return messages
   end
 end

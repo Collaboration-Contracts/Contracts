@@ -13,15 +13,17 @@ RSpec.describe User, type: :model do
   it { should validate_length_of(:username).is_at_least(MIN_USERNAME_LENGTH) }
   it { should validate_length_of(:username).is_at_most(MAX_USERNAME_LENGTH) }
 
-# test a list of presumably valid usernames
-  VALID_USERNAME_ARRAY.each do |username|
-    it { should allow_values(username).for(:username) }
-  end
+context "with valid username" do
+    VALID_USERNAME_ARRAY.each do |username|
+      it { should allow_values(username).for(:username) }
+    end
+end
 
-# test a list of presumably invalid usernames
-  INVALID_USERNAME_ARRAY.each do |username|
-    it {should_not allow_values(username).for(:username)}
-  end
+context "with invalid username" do
+    INVALID_USERNAME_ARRAY.each do |username|
+      it {should_not allow_values(username).for(:username)}
+    end
+end
 
 # tests all the methods provided by the #has_secure_password method
 # brought to us by the bcrypt gem

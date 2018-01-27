@@ -15,6 +15,8 @@ end
 
 def fail_and_redirect(username)
   verify_no_user(username)
-  it { should set_flash[:danger] }
+  it "should set a flash message" do
+    expect(flash[:danger]).to be_truthy
+  end
   it { should redirect_to register_path }
 end

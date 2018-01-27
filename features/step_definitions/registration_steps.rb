@@ -54,6 +54,10 @@ And("I enter the username {string}") do |username|
   fill_in 'username', with: username
 end
 
-And "I see an invalid username error message" do
+And("I see an invalid username error message") do
   page.assert_text(INVALID_USERNAME)
+end
+
+And("I see an existing username error message") do
+  page.assert_text(EXISTING_USERNAME)
 end
