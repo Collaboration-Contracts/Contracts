@@ -1,5 +1,5 @@
-def create_valid_user
-  @user = User.create({username: "TheEdge", password: "password"})
+def register_user(username, password)
+  @user = User.create({username: username, password: password})
 end
 
 def post_session_params(username, password)

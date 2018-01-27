@@ -20,9 +20,9 @@ RSpec.describe SessionsController do
          to(controller: :sessions, action: :create)
     }
 
-    before { create_valid_user }
 
     before do
+      register_user("TheEdge","password")
       @params_wo_password = { :session => {:username => "TheEdge" }}
       @params_wo_username = { :session => { :password => "password" }}
       @wrong_username = { :session => {:username => "NotTheEdge", :password => "password" }}
