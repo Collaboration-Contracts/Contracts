@@ -10,8 +10,8 @@
 
   <body>
     <h1>Collaboration Contracts</h1>
-    <% flash.each do |k,v| %>
-      <p class="<%= k %> flash_message"><span class="excl">&#10071;</span> <%= v %></p>
+    <% flash[:danger] && flash[:danger].each do |msg| %>
+      <p class="danger flash_message"><span class="excl">&#10071;</span> <%= msg %></p>
     <% end %>
     <%= yield %>
   </body>

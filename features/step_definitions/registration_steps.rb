@@ -45,41 +45,15 @@ Then(/^I do not have an account as (.*)$/) do |username|
     expect(User.find_by(username: username)).to be_falsey
 end
 
-Given ("the username {string} exists") do |username|
+Given("the username {string} exists") do |username|
   User.create(username: username, password: 'password')
 end
 
-And ("I enter the username {string}") do |username|
+And("I enter the username {string}") do |username|
   visit register_path
   fill_in 'username', with: username
 end
 
-
-
-#
-# For example, say you have this:
-#
-# ===============================
-#   Scenario: Test it out
-#   Given I do something to with
-#       | Setting | Value |
-#       | Some Setting | Some Value |
-# ===============================
-#
-# and you have a matcher like this
-#
-# ===============================
-# Given (/I do something to with$/) do |table|
-#   puts ("Table: #{table}")
-#   puts ("Table class: #{table.class}")
-# end
-# ===============================
-#
-# You will get this output:
-#
-# ===============================
-#    Given I do something to with
-#       Specifics:
-#         |     Setting      |     Value      |
-#         |     Some Setting |     Some Value |
-#       Specifics class: Cucumber::Ast::Table
+And "I see an invalid username error message" do
+  page.assert_text(INVALID_USERNAME)
+end

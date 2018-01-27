@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     else
       # If user's login doesn't work, send them back to the login form
       assign_login_flash_message
-      flash[:danger] = @notice
+      flash[:danger] = [@notice]
       redirect_to login_path
     end
   end
