@@ -2,6 +2,11 @@ require 'rails_helper'
 
 RSpec.describe UsersController do
   describe "GET new" do
+    it do
+      should route(:get, '/register').
+      to(controller: :users, action: :new)
+    end
+
     it "assigns @user" do
       get :new
       expect(assigns(:user)).to be_kind_of(User)
@@ -14,6 +19,11 @@ RSpec.describe UsersController do
   end
 
   describe "Post create" do
+    it do
+      should route(:post, '/users').
+      to(controller: :users, action: :create)
+    end
+
     before do
       @params = { :user => {:username => "TheEdge", :password => "password" }}
       @params_wo_password = { :user => {:username => "TheEdge" }}
