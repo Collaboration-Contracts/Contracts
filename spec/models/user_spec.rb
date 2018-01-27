@@ -10,10 +10,17 @@ RSpec.describe User, type: :model do
 
   it { should validate_length_of(:username).is_at_least(MIN_USERNAME_LENGTH)}
   it { should validate_length_of(:username).is_at_most(MAX_USERNAME_LENGTH)}
+  it { should have_secure_password }
+  VALID_USERNAME_ARRAY.each do |username|
+    it { should allow_values(username).for(:username) }
+  end
+  INVALID_USERNAME_ARRAY.each do |username|
+    it {should_not allow_values(username).for(:username)}
+  end
 
   it do
     User.create({username: "TheEdge", password: "password"})
-    should validate_uniqueness_of(:username) 
+    should validate_uniqueness_of(:username)
   end
 
 
