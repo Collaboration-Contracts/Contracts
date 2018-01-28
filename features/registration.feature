@@ -58,7 +58,6 @@ Feature:	In order to be able to save and work with my contracts
 #these scenarios can replace the 'don't register w/ invalid username"
 # and "if username already exists" scenarios
 # once we add the error messages
-@wip
   Scenario Outline: don't register & error with invalid username
     Given I enter an invalid <username>
     And I enter a password
@@ -72,12 +71,11 @@ Feature:	In order to be able to save and work with my contracts
     | GrandMasterFunkMeister |
     | I.am.batman.           |
 
-  @wip
-    Scenario: don't register & error if username already exists
-      Given the username 'CareBear' exists
-      And I enter the username 'CareBear'
-      And I enter a password
-      When I register
-      Then I do not have an account
-      And I view the Registration form
-      And I see an existing username error message
+  Scenario: don't register & error if username already exists
+    Given the username 'CareBear' exists
+    And I enter the username 'CareBear'
+    And I enter a password
+    When I register
+    Then I do not have an account
+    And I view the Registration form
+    And I see an existing username error message

@@ -29,3 +29,6 @@ Collaboration Contracts
 2. `bundle exec rake cucumber:wip` - runs tests under development and may not pass (limit 3)
 3. `bundle exec rake cucumber:devready` - runs tests that are defined but not developed and should not pass
 4. `bundle exec rake cucumber:all` - runs all tests regardless of tags
+
+### How to run full test suite
+`bundle exec rake ci:tests` - runs full suite tested by travis

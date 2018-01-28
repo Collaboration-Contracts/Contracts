@@ -24,7 +24,7 @@ Then("I view the Login form") do
   find("div.login_form")
 end
 
-Then("see a bad username or password error message") do
+And("I see a bad username or password error message") do
   page.assert_text(INVALID_LOGIN)
 end
 
@@ -34,11 +34,11 @@ When("I login with a registered username and no password") do
   click_button
 end
 
-Then("see a blank password error message") do
-  page.assert_text(BLANK_PASSWORD)
+And("I see a blank password error message") do
+  page.assert_text(BLANK_LOGIN_PARAMS)
 end
 
-Then("the password field is blank") do
+And("I see a blank password field") do
   find_field("password").value.blank?
 end
 
@@ -48,8 +48,8 @@ When("I login with no username and a registered password") do
   click_button
 end
 
-Then("see a blank username error message") do
-  page.assert_text(BLANK_USERNAME)
+And("I see a blank username error message") do
+  page.assert_text(BLANK_LOGIN_PARAMS)
 end
 
 When("I login with a registered username and a non-matching password") do

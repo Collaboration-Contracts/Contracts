@@ -63,6 +63,15 @@ RSpec.describe UsersController, type: :controller do
       end
     end
 
+    context "with existing username" do
+      before { create_valid_user && post_user_params('TheEdge', 'password') }
+      it "sets flash message" do
+        expect(flash[:danger]).to be_truthy
+      end
+
+      it { should redirect_to register_path }
+    end
+
     context "without a username, with a password" do
       before { post_user_params(nil, 'password') }
       fail_and_redirect(nil)
