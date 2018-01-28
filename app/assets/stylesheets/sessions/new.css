@@ -1,0 +1,15 @@
+.login_form {
+  width: 300px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.login_form * * {
+  margin: 10px 10px 10px 10px;
+}
+
+.login_form .submit_btn {
+  position: absolute;
+  right: 0;
+}

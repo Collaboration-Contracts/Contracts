@@ -1,10 +1,10 @@
 Given("I have registered an account") do
-  User.create(:username => "Bono", :password => "password")
+  User.create(:username => "TheEdge", :password => "password")
 end
 
 When("I login with a registered username and password") do
   visit login_path
-  fill_in 'username', with: "Bono"
+  fill_in 'username', with: "TheEdge"
   fill_in 'password', with: "password"
   click_button("Login")
 end
@@ -15,7 +15,7 @@ end
 
 When("I login with a non-registered username and password") do
   visit login_path
-  fill_in 'username', with: "Not Bono"
+  fill_in 'username', with: "Not TheEdge"
   fill_in 'password', with: "password"
   click_button
 end
@@ -30,7 +30,7 @@ end
 
 When("I login with a registered username and no password") do
   visit login_path
-  fill_in 'username', with: "Bono"
+  fill_in 'username', with: "TheEdge"
   click_button
 end
 
@@ -54,7 +54,7 @@ end
 
 When("I login with a registered username and a non-matching password") do
   visit login_path
-  fill_in 'username', with: 'Bono'
+  fill_in 'username', with: 'TheEdge'
   fill_in 'password', with: 'Not password'
   click_button
 end

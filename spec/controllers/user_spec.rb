@@ -1,66 +1,76 @@
 require 'rails_helper'
+require 'helpers/user_helper'
 
-RSpec.describe UsersController do
-  describe "GET new" do
+# methods like #post_user_params, #fail_and_redirect, #create_valid_user
+# all come from user_helper.rb
+
+RSpec.describe UsersController, type: :controller do
+  describe "GET #new" do
+    before { get :new }
+
+# let's make sure the right route takes us to the right action
+    it { should route(:get, '/register').
+         to(controller: :users, action: :new)
+       }
+
+# expect this action produces an @user variable and that it's of User type
     it "assigns @user" do
-      get :new
       expect(assigns(:user)).to be_kind_of(User)
     end
 
-    it "renders the new template" do
-      get :new
-      expect(response).to render_template("users/new")
-    end
+# this will follow convention - testing that the 'users/new' was rendered
+    it { should render_template 'new' }
   end
 
-  describe "Post create" do
-    before do
-      @params = { :user => {:username => "bono", :password => "password" }}
-      @params_wo_password = { :user => {:username => "bono" }}
-      @params_wo_username = { :user => { :password => "password" }}
+
+  describe "Post #create" do
+    it { should route(:post, '/users').
+         to(controller: :users, action: :create)
+       }
+
+    context "with an invalid username" do
+      INVALID_USERNAME_ARRAY.each do |username|
+        it "does not create a new user: #{username}" do
+          post_user_params(username, 'password')
+          expect(User.count).to eq(0)
+          expect(User.find_by(username: username)).to be_falsey
+        end
+
+        it "sets the flash message for invalid username" do
+          post_user_params(username, 'password')
+          expect(flash[:danger]).to eq([INVALID_USERNAME])
+        end
+      end
     end
 
-    # REMOVED - changed schema to require password
-    # context "without a password" do
-    #   it "creates a new user" do
-    #     expect{ post :create, params: @params }.to change{ User.count }.by(1)
-    #   end
-    #   it "redirects to contract dashboard" do
-    #     post :create, params: @params
-    #     expect(response).to redirect_to(dashboard_path)
-    #   end
-    # end
+    context "with a valid username" do
+      VALID_USERNAME_ARRAY.each do |username|
+        it "does create a new user: #{username}" do
+          post_user_params(username, 'password')
+          expect(User.count).to eq(1)
+          expect(User.find_by(username: username)).to be_truthy
+        end
 
-    context "with a password" do
-      it "creates a new user" do
-        expect{ post :create, params: @params }.to change{ User.count }.by(1)
-      end
-      it "redirects to contract dashboard" do
-        post :create, params: @params
-        expect(response).to redirect_to(dashboard_path)
+        it "doesn't set any flash message" do
+          post_user_params(username, 'password')
+          expect(flash[:danger]).to be_falsey
+        end
+
+        it "redirects to the dashboard" do
+          post_user_params(username, 'password')
+          expect(response).to redirect_to(dashboard_path)
+        end
       end
     end
 
     context "without a username, with a password" do
-      it "does not create a new user" do
-        expect { post :create, params: @params_wo_username}.to change{ User.count }.by(0)
-      end
-
-      it "redirects to the register page" do
-        post :create, params: @params_wo_username
-        expect(response).to redirect_to(register_path)
-      end
+      before { post_user_params(nil, 'password') }
+      fail_and_redirect(nil)
     end
 
     context "with a username, without a password" do
-      it "does not create a new user" do
-        expect { post :create, params: @params_wo_password}.to change{ User.count }.by(0)
-      end
-
-      it "redirects to the register page" do
-        post :create, params: @params_wo_password
-        expect(response).to redirect_to(register_path)
-      end
+      before { post_user_params("TheEdge", nil) }
+      fail_and_redirect("TheEdge")
     end
   end
 
