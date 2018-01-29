@@ -2,9 +2,9 @@
 pretty = "--format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} --strict"
 rerun = File.file?('rerun.txt') ? IO.read('rerun.txt') : ""
 rerun_opts = rerun.to_s.strip.empty? ? "--format #{ENV['CUCUMBER_FORMAT'] || 'progress'} features" : "--format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} #{rerun}"
-std_opts = "#{pretty} --tags 'not (@devready or @wip)'"
+std_opts = "#{pretty} --tags 'not (@dev_ready or @wip)'"
 %>
 default: <%= std_opts %> features
 wip: --tags @wip:5 --wip features
-rerun: <%= rerun_opts %> --format rerun --out rerun.txt --strict --tags 'not @devready'
-devready: <%= pretty %> --tags @devready features
+rerun: <%= rerun_opts %> --format rerun --out rerun.txt --strict --tags 'not @dev_ready'
+dev_ready: <%= pretty %> --tags @dev_ready features
