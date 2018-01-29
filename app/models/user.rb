@@ -26,13 +26,8 @@ class User < ApplicationRecord
       messages << errors.messages[:password]
     end
 
-    ## only way I can think to access the password length before it gets encrypted
-    ## use active model validation from above to access the Object's errors
-    # !errors.messages[:password].empty? ? messages << INVALID_PASSWORD : nil
-
-
     User.find_by(username: username) ? messages << EXISTING_USERNAME : nil
 
-    !messages.empty? ? messages.flatten.uniq : nil
+    messages.flatten.uniq
   end
 end
