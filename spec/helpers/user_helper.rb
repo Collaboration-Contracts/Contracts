@@ -3,7 +3,6 @@ def create_valid_user
 end
 
 def post_user_params(username, password)
-  p password
   post :create, params: { user: { username: username, password: password }}
 end
 
