@@ -7,6 +7,8 @@ class User < ApplicationRecord
   validates_format_of   :username, :with => VALID_USERNAME_CHARS
 
   validates_presence_of :password_digest
+
+  validates_length_of   :password, {minimum: 6}
   has_secure_password
 
   def custom_error_messages
@@ -17,6 +19,10 @@ class User < ApplicationRecord
       messages << INVALID_USERNAME
     end
 
+    ## only way I can think to access the password length before it gets encrypted
+    ## use active model validation from above to access the Object's errors
+    !errors.messages[:password].empty? ? messages << INVALID_PASSWORD : nil
+    
     User.find_by(username: username) ? messages << EXISTING_USERNAME : nil
 
     !messages.empty? ? messages : nil
