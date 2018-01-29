@@ -7,10 +7,7 @@ class User < ApplicationRecord
   validates_format_of   :username, :with => VALID_USERNAME_CHARS
 
   validates_presence_of :password_digest
-
   has_secure_password
-
-  before_save :validate_password
 
   def custom_error_messages
     messages = []
