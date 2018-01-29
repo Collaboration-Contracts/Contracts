@@ -63,6 +63,11 @@ RSpec.describe UsersController, type: :controller do
       end
     end
 
+    xcontext "with an invalid password" do
+      before { post_user_params("TheEdge","a1b2c") }
+      fail_and_redirect("TheEdge")
+    end
+
     context "with existing username" do
       before { create_valid_user && post_user_params('TheEdge', 'password') }
       it "sets flash message" do

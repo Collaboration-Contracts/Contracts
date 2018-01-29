@@ -30,5 +30,6 @@ class SessionsController < ApplicationController
     else
       @notice = INVALID_LOGIN
     end
+    return
   end
 end
