@@ -8,23 +8,31 @@ class User < ApplicationRecord
 
   validates_presence_of :password_digest
 
-  validates_length_of   :password, {minimum: 6}
+  validates_length_of   :password, minimum: 6, message: INVALID_PASSWORD
   has_secure_password
 
   def custom_error_messages
     messages = []
-    if username.length == 0 || password.nil?
+
+    if username.length == 0
       messages << BLANK_REGISTER_PARAMS
     elsif !username.length.between?(MIN_USERNAME_LENGTH,MAX_USERNAME_LENGTH) || !username.match(VALID_USERNAME_CHARS)
       messages << INVALID_USERNAME
     end
 
+    if password.nil?
+      messages << BLANK_REGISTER_PARAMS
+    else
+      messages << errors.messages[:password]
+    end
+
     ## only way I can think to access the password length before it gets encrypted
     ## use active model validation from above to access the Object's errors
-    !errors.messages[:password].empty? ? messages << INVALID_PASSWORD : nil
+    # !errors.messages[:password].empty? ? messages << INVALID_PASSWORD : nil
+
 
     User.find_by(username: username) ? messages << EXISTING_USERNAME : nil
 
-    !messages.empty? ? messages : nil
+    !messages.empty? ? messages.flatten.uniq : nil
   end
 end
