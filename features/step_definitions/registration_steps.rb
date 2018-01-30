@@ -8,6 +8,7 @@ And("I enter a password") do
 end
 
 When ("I register") do
+  @pre_register_user_count = User.count
   click_button("Register")
 end
 
@@ -20,44 +21,43 @@ And ("I do not enter a password") do
 end
 
 Then ("I do not have an account") do
-  expect(User.find_by(username: "TheEdge")).to be_falsey
+  expect(@pre_register_user_count).to eq(User.count)
 end
 
 And("I view the Registration form") do
   find("form#new_user")
 end
 
-Given (/^I enter a valid (.*)$/) do |username|
+And("I enter {string} for the username") do |username|
   visit register_path
   fill_in 'username', with: username
 end
 
-Given (/^I enter an invalid (.*)$/) do |username|
+And ("I enter {string} for the password") do |password|
   visit register_path
-  fill_in 'username', with: username
+  fill_in 'password', with: password
 end
 
-Then(/^I have an account as (.*)$/) do |username|
+Then("I have an account as {string}") do |username|
     expect(User.find_by(username: username)).to be_truthy
 end
 
-Then(/^I do not have an account as (.*)$/) do |username|
-    expect(User.find_by(username: username)).to be_falsey
-end
-
 Given("the username {string} exists") do |username|
-  User.create(username: username, password: 'password')
+  @user_id = User.create(username: username, password: 'password').id
 end
 
-And("I enter the username {string}") do |username|
-  visit register_path
-  fill_in 'username', with: username
+And("I view a required fields error message") do
+  page.assert_text(BLANK_REGISTER_PARAMS)
 end
 
-And("I see an invalid username error message") do
+And("I view an invalid password error message") do
+    page.assert_text(INVALID_PASSWORD)
+end
+
+And("I view an invalid username error message") do
   page.assert_text(INVALID_USERNAME)
 end
 
-And("I see an existing username error message") do
+And("I view an existing username error message") do
   page.assert_text(EXISTING_USERNAME)
 end
