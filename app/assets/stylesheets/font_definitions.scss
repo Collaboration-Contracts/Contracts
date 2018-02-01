@@ -1,0 +1,53 @@
+@import 'variables';
+
+html {
+  font-family: $main-font-stack;
+}
+
+.title-font, h1{
+  font-family: $main-font-stack;
+  color: $purple;
+  font-weight: bold;
+}
+
+.small-title-font, h2, h3 {
+  font-family: $main-font-stack;
+  color: $gray;
+  font-weight: bold;
+}
+
+.subtitle-font, h4, h5, h6 {
+  font-family: $main-font-stack;
+  color: $blue;
+  font-weight: bold;
+}
+
+.body-font, p {
+  font-family: $main-font-stack;
+  color: $black;
+  font-weight: normal;
+}
+
+.small-body-font {
+  font-family: $main-font-stack;
+  color: $gray;
+  font-weight: normal;
+}
+
+.caption-font {
+  font-family: $main-font-stack;
+  color: $black;
+  font-weight: lighter;
+}
+
+.quote-font {
+  font-family: $quote-font-stack;
+  color: $black;
+}
+
+.attribution-font {
+  font-family: $main-font-stack;
+  color: $tan;
+  font-weight: lighter;
+  font-style: italic;
+}
