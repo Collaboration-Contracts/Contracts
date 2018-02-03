@@ -41,4 +41,26 @@ Feature:	In order to execute a collaboration contract
         | invalid_title          |
         | dog                    |
         | This is longer than 80 characters and it's therefore not a valid title for a contract, despite meeting all other criteria. |
-        | No glyphs  |
+        | No glyphs              |
+
+    Scenario: contract is associated to owner
+      Given I am the user 'Doc'
+      When I create a contract with the title 'Super'
+      Then a contract with the title 'Super' is owned by 'Doc'
+
+
+    Scenario: contract title is not unique across system
+      Given I am the user 'Doc'
+      And a contract with the title 'My Contract' is owned by 'Diane'
+      When I create a contract with the title 'My Contract'
+      Then a contract with the title 'My Contract' is owned by 'Diane'
+      And a contract with the title 'My Contract' is owned by 'Doc'
+
+
+      Scenario: contract title is unique to user
+        Given I am the user 'Doc'
+        And a contract with the title 'My Next Contract' is owned by 'Doc'
+        When I create a contract with the title 'My Next Contract'
+        Then I do not have a new contract
+        And I view a title must be unique error message
+
