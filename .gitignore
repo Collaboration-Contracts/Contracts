@@ -1,4 +1,5 @@
 .gitconfig
+.idea/
 .vimrc
 *.rbc
 capybara-*.html
