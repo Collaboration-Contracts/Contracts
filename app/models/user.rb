@@ -14,20 +14,22 @@ class User < ApplicationRecord
   def custom_error_messages
     messages = []
 
-    if username.length == 0
-      messages << BLANK_REGISTER_PARAMS
-    elsif !username.length.between?(MIN_USERNAME_LENGTH,MAX_USERNAME_LENGTH) || !username.match(VALID_USERNAME_CHARS)
-      messages << INVALID_USERNAME
-    end
-
-    if password.nil?
-      messages << BLANK_REGISTER_PARAMS
-    else
-      messages << errors.messages[:password]
-    end
+    messages << check_blank_username(username)
+    messages << check_username_format(username)
+    messages << BLANK_REGISTER_PARAMS if password.nil?
+    messages << errors.messages[:password]
 
     User.find_by(username: username) ? messages << EXISTING_USERNAME : nil
 
-    messages.flatten.uniq
+    messages.reject(&:blank?).flatten.uniq
   end
+
+  def check_blank_username(username)
+    BLANK_REGISTER_PARAMS if username.length == 0
+  end
+
+  def check_username_format(username)
+    INVALID_USERNAME unless username.length.between?(MIN_USERNAME_LENGTH,MAX_USERNAME_LENGTH) && username.match(VALID_USERNAME_CHARS)
+  end
+
 end
