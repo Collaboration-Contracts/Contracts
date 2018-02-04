@@ -1,15 +1,13 @@
-<div class="login_form">
+<div class="login-form col s4 offset-s4">
   <%= form_for(:session, url: login_path) do |f| %>
-  <div class="username">
+  <div class="username input-field">
+    <%= f.text_field :username, id: 'username', class: "validate" %>
     <%= f.label :username %>
-    <%= f.text_field :username, id: 'username' %>
   </div>
-  <div class="password">
+  <div class="password input-field">
+    <%= f.text_field :password, id: 'password', type: 'password', class: "validate" %>
     <%= f.label :password, "Password" %>
-    <%= f.text_field :password, id: 'password', type: 'password' %>
   </div>
-  <div class="submit_btn">
-    <%= f.submit "Login" %>
-  </div>
+    <%= button_tag "Login", :class => "btn waves-effect waves-purple submit-btn" %>
   <% end %>
 </div>
