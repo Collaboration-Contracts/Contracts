@@ -1,4 +1,4 @@
-@dev_ready
+@in_requirements
 Feature:	In order to execute a collaboration contract
           As a contract owner
           I want to create a contract

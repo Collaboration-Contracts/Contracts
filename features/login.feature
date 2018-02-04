@@ -8,7 +8,12 @@ Feature:	In order to prevent other people from seeing my contracts
 # 	When I login with that username
 # 	Then I view the CC dashboard
 
-Scenario: login with username and password
+  @dev_ready
+  Scenario: Page has title
+    When I am on the registration page
+    Then I view "Login" in the page title
+
+  Scenario: login with username and password
   Given I have registered an account
 	When I login with a registered username and password
 	Then I view the CC dashboard

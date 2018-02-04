@@ -1,13 +1,18 @@
-Feature:	In order to be able to save and work with my contracts
+Feature:  In order to be able to save and work with my contracts
           As a visitor to CC
           I want to register an account
 
 
+  @dev_ready
+  Scenario: Page has title
+    When I am on the registration page
+    Then I view "Registration" in the page title
+
   Scenario: register with username and password
-	  Given I enter a username
+    Given I enter a username
     And I enter a password
     When I register
-	  Then I have an account
+    Then I have an account
 
   Scenario Outline: no account with blank username and/or password
     Given I enter '<username>' for the username
@@ -57,7 +62,6 @@ Feature:	In order to be able to save and work with my contracts
     Then I do not have an account
     And I view an existing username error message
 
-@wip
   Scenario: don't register & error with invalid password
     Given I enter a username
     And I enter 'Bono' for the password
