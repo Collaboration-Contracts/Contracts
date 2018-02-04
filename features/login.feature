@@ -8,7 +8,7 @@ Feature:	In order to prevent other people from seeing my contracts
 # 	When I login with that username
 # 	Then I view the CC dashboard
 
-  @wip
+  @dev_ready
   Scenario: Page has title
     When I am on the registration page
     Then I view "Login" in the page title
