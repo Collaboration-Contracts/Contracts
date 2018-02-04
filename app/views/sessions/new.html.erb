@@ -1,13 +1,20 @@
-<div class="login-form col s8 offset-s2 m6 offset-m3 l4 offset-l4">
-  <%= form_for(:session, url: login_path) do |f| %>
-  <div class="username input-field">
-    <%= f.text_field :username, id: 'username', class: "validate" %>
-    <%= f.label :username %>
+<div class="row">
+  <div class="login-form col s8 offset-s2 m6 offset-m3 l4 offset-l4">
+    <%= form_for(:session, url: login_path) do |f| %>
+    <div class="username input-field">
+      <%= f.text_field :username, id: 'username', class: "validate" %>
+      <%= f.label :username %>
+    </div>
+    <div class="password input-field">
+      <%= f.text_field :password, id: 'password', type: 'password', class: "validate" %>
+      <%= f.label :password, "Password" %>
+    </div>
+    <%= button_tag "Login", :class => "btn waves-effect waves-purple submit-btn" %>
+    <% end %>
   </div>
-  <div class="password input-field">
-    <%= f.text_field :password, id: 'password', type: 'password', class: "validate" %>
-    <%= f.label :password, "Password" %>
+</div>
+<div class="row">
+  <div class="col s8 offset-s2 m6 offset-m3 l4 offset-l4 no-padding">
+    <p>If you are new to Collaboration Contracts, you can <%= link_to "create an account", register_path %>.</p>
   </div>
-  <%= button_tag "Login", :class => "btn waves-effect waves-purple submit-btn" %>
-  <% end %>
 </div>
