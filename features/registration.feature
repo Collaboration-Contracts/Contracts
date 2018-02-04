@@ -3,6 +3,11 @@ Feature:  In order to be able to save and work with my contracts
           I want to register an account
 
 
+  @wip
+  Scenario: Page has title
+    When I am on the registration page
+    Then I view "Registration" in the page title
+
   Scenario: register with username and password
     Given I enter a username
     And I enter a password
@@ -57,7 +62,6 @@ Feature:  In order to be able to save and work with my contracts
     Then I do not have an account
     And I view an existing username error message
 
-@wip
   Scenario: don't register & error with invalid password
     Given I enter a username
     And I enter 'Bono' for the password
