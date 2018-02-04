@@ -24,10 +24,6 @@ Then ("I do not have an account") do
   expect(@pre_register_user_count).to eq(User.count)
 end
 
-And("I view the Registration form") do
-  find("form#new_user")
-end
-
 And("I enter {string} for the username") do |username|
   visit register_path
   fill_in 'username', with: username

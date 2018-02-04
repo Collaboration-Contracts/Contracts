@@ -21,7 +21,7 @@ When("I login with a non-registered username and password") do
 end
 
 Then("I view the Login form") do
-  find("div.login_form")
+  find("div.login-form")
 end
 
 And("I see a bad username or password error message") do
