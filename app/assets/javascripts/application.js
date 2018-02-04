@@ -13,7 +13,3 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
-
-$( document ).on('turbolinks:load', function() {
-  $(".button-collapse").sideNav({menuWidth: 350});
-})
