@@ -1,0 +1,10 @@
+<% if flash[:danger] %>
+  <div class="flash-container">
+    <i class="material-icons medium"> error_outline </i>
+    <ul>
+      <% flash[:danger].each do |msg| %>
+        <li class="danger flash-message"> <%= msg %> </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
