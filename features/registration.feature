@@ -1,13 +1,13 @@
-Feature:	In order to be able to save and work with my contracts
+Feature:  In order to be able to save and work with my contracts
           As a visitor to CC
           I want to register an account
 
 
   Scenario: register with username and password
-	  Given I enter a username
+    Given I enter a username
     And I enter a password
     When I register
-	  Then I have an account
+    Then I have an account
 
   Scenario Outline: no account with blank username and/or password
     Given I enter '<username>' for the username
