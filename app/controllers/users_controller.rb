@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   protect_from_forgery with: :exception
 
   def new
-    @page_title = "Register"
+    @page_title = "Registration"
     @user = User.new()
   end
 

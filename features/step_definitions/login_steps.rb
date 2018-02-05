@@ -2,6 +2,14 @@ Given("I have registered an account") do
   User.create(:username => "TheEdge", :password => "password")
 end
 
+When("I am on the login page") do
+    visit login_path
+end
+
+Then("I view {string} in the page title") do |string|
+  within('.page-title') { assert_text(string) }
+end
+
 When("I login with a registered username and password") do
   visit login_path
   fill_in 'username', with: "TheEdge"

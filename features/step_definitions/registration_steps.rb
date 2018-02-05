@@ -3,6 +3,15 @@ Given("I enter a username") do
   fill_in 'username', with: "TheEdge"
 end
 
+When("I am on the registration page") do
+    visit register_path
+end
+
+# same test ran in login_steps is being checked here
+# Then("I view {string} in the page title") do |string|
+#   within('.page-title') { assert_text(string) }
+# end
+
 And("I enter a password") do
   fill_in 'password', with: "password"
 end
