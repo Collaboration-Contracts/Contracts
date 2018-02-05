@@ -3,7 +3,7 @@ Feature:  In order to be able to save and work with my contracts
           I want to register an account
 
 
-  @dev_ready
+
   Scenario: Page has title
     When I am on the registration page
     Then I view "Registration" in the page title
