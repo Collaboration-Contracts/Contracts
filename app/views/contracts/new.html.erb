@@ -1,0 +1,44 @@
+<table class="striped bordered">
+  <% explain = "<strong>Sole Decision Maker</strong><br/><span>Will explain my decision</span>".html_safe %>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Explain <%= render :partial => 'contracts/tooltip_icon', :locals => {tooltip_text: explain} %></th>
+      <th>Consult</th>
+      <th>Agree</th>
+      <th>Advise</th>
+      <th>Accept</th>
+      <th>Abstain</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td >Item</td>
+      <td>Eclair</td>
+      <td>$0.87</td>
+      <td>Alvin</td>
+      <td>Eclair</td>
+      <td>$0.87</td>
+      <td>$0.87</td>
+    </tr>
+    <tr>
+      <td>Item</td>
+      <td>Alan</td>
+      <td>Jellybean</td>
+      <td>$3.76</td>
+      <td>Alvin</td>
+      <td>Eclair</td>
+      <td>$0.87</td>
+    </tr>
+    <tr>
+      <td>Item</td>
+      <td>Jonathan</td>
+      <td>Lollipop</td>
+      <td>$7.00</td>
+      <td>Alvin</td>
+      <td>Eclair</td>
+      <td>$0.87</td>
+    </tr>
+  </tbody>
+</table>
