@@ -1,0 +1,54 @@
+@import "variables";
+.contract-table {
+  letter-spacing: 1.5px;
+
+  thead {
+    background-color: $brown;
+    color: white;
+
+    th {
+      border-radius: 0px;
+      text-align: center;
+      font-weight: lighter;
+
+      a {
+        color: $blue;
+        font-size: 20px;
+      }
+    }
+  }
+
+  tbody {
+
+    tr {
+
+      &:nth-child(even) {
+        background-color: white;
+      }
+
+      &:last-child {
+        border-bottom: 0px;
+      }
+
+      td {
+        border-left: 1px $light-gray solid;
+        border-right: 1px $light-gray solid;
+
+        &:last-child {
+          border-right: 0px;
+        }
+
+        &:nth-child(1) {
+          color: white;
+          background-color: $purple;
+          border: 0px;
+          max-width: 120px;
+          word-wrap: break-word;
+          text-align: right;
+          font-weight: lighter;
+          padding-right: 10px;
+        }
+      }
+    }
+  }
+}
