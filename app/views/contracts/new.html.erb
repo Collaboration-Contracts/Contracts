@@ -1,5 +1,6 @@
 <div class="row">
   <div class="col s10 m8 offset-m2 offset-s1">
+    <a class="add-row-btn btn-floating btn-large waves-effect waves-light" onClick="addRow()"><i class="material-icons">add</i></a>
     <table class="contract-table striped bordered" border='1'>
       <thead>
         <tr>
@@ -12,43 +13,40 @@
 
       <tbody>
         <tr>
-          <td>Line Item 1</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Line Item 2</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Line Item 3</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Line Item 4</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><input type="text" placeholder="Enter line item.."/></td>
+          <% ROLES.length.times do %>
+            <td><input type="text" placeholder="Enter name.."/></td>
+          <% end %>
         </tr>
       </tbody>
     </table>
   </div>
-
 </div>
+
+<script type="text/javascript">
+  const emptyRow = $('tbody').find('tr').clone();
+
+  function addRow() {
+    $('tbody tr').length <= 10 && $('.contract-table').find('tbody').append(emptyRow.clone());
+  }
+
+
+
+
+
+  $('input').on('focus', function() {
+    initWidth = $(this).outerWidth() - ($(this).val().length*3)
+
+    $(this).keyup(function(){
+      var $this = $(this);
+      var modifier = (($this.val().length)*3)
+      var newWidth = initWidth + modifier;
+
+      if (modifier === 0) {
+        $this.css('width', initWidth);
+      } else if (modifier > 30) {
+        $this.css('width', newWidth);
+      }
+    })
+  })
+</script>

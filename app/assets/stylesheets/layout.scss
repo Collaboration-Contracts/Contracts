@@ -30,6 +30,7 @@
 
 #entire-page {
   margin-bottom: 0px;
+  display: flex;
 }
 
 #entire-page > .col {
@@ -64,7 +65,7 @@
   .sidemenu-content {
     color: white;
     background-color: $brown;
-    height: calc(100vh - 74px);
+    min-height: calc(100vh - 74px);
   }
 }
 
@@ -106,7 +107,7 @@
 
 .main-container {
   position: relative;
-  height: calc(100vh - 75px);
+  min-height: calc(100vh - 75px);
   background-color: $light-blue;
   border: 8px $light-gray solid;
   border-radius: 16px;
