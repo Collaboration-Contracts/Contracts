@@ -103,14 +103,18 @@
 
 #main-body {
   margin: 0;
-  display: flex;
-  // align-items: stretch;
+  position: relative;
+  // display: flex;
+  // align-items: flex-end;
 
   .sidemenu-content {
     color: white;
     background-color: $brown;
     min-height: calc(100vh - 74px);
-    flex-grow: 1;
+
+    // display: flex;
+    // flex: 1;
+    // flex-direction: column;
   }
 
   .main-container {
@@ -122,6 +126,8 @@
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
     border-top: none;
-    flex-grow: 1;
+    // flex: 1;
+    // flex-direction: column;
+
   }
 }
