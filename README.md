@@ -10,6 +10,8 @@ Staging: https://stage-collaboration-contracts.herokuapp.com/
 
 Production: https://www.colllaborationcontracts.com/
 
+Review apps are also created with each pull request. These expire after 5 days of inactivity.
+
 ## Getting Started with this Project
 
 ### Some necessary system reqs
