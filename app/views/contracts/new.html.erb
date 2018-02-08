@@ -1,54 +1,53 @@
 <div class="row">
   <div class="col s10 m8 offset-m2 offset-s1">
+
     <table class="contract-table striped bordered" border='1'>
       <thead>
         <tr>
           <th></th>
           <% ROLES.each do |k,v| %>
-            <th><%= k %> <%= render :partial => 'contracts/tooltip_icon', :locals => {tooltip_text: v} %></th>
+            <th><%= k %>
+              <a class='material-icons'> info</a>
+              <span class="role-tooltiptext"><%= v[:action] %></span>
+            </th>
           <% end %>
         </tr>
       </thead>
 
       <tbody>
-        <tr>
-          <td>Line Item 1</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Line Item 2</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Line Item 3</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Line Item 4</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
+        <% 10.times do %>
+          <tr>
+            <td><textarea placeholder="Enter line item.."></textarea></td>
+            <% ROLES.length.times do %>
+              <td><textarea placeholder="Enter name.."></textarea></td>
+            <% end %>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
-
 </div>
+
+<script type="text/javascript">
+  const emptyRow = $('tbody').find('tr').clone();
+
+  function addRow() {
+    $('tbody tr').length <= 10 && $('.contract-table').find('tbody').append(emptyRow.clone());
+  }
+
+  $('input').on('focus', function() {
+    initWidth = $(this).outerWidth() - ($(this).val().length*3)
+
+    $(this).keyup(function(){
+      var $this = $(this);
+      var modifier = (($this.val().length)*3)
+      var newWidth = initWidth + modifier;
+
+      if (modifier === 0) {
+        $this.css('width', initWidth);
+      } else if (modifier > 30) {
+        $this.css('width', newWidth);
+      }
+    })
+  })
+</script>

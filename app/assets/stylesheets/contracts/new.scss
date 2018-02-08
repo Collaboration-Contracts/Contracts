@@ -1,12 +1,24 @@
 @import "variables";
+
+.add-row-btn {
+  margin-bottom: 10px;
+  background-color: $purple;
+
+  &:hover {
+    background-color: lighten($purple, 15%);
+  }
+}
+
 .contract-table {
   letter-spacing: 1.5px;
 
   thead {
     background-color: $brown;
     color: white;
+    cursor: default;
 
     th {
+      position: relative;
       border-radius: 0px;
       text-align: center;
       font-weight: lighter;
@@ -33,6 +45,7 @@
       td {
         border-left: 1px $light-gray solid;
         border-right: 1px $light-gray solid;
+        padding: 5px 0 0 0;
 
         &:last-child {
           border-right: 0px;
@@ -42,13 +55,64 @@
           color: white;
           background-color: $purple;
           border: 0px;
-          max-width: 120px;
+          min-width: 200px;
           word-wrap: break-word;
           text-align: right;
           font-weight: lighter;
-          padding-right: 10px;
+          // padding-right: 10px;
+          textarea:first-child {
+            color: white;
+          }
+        }
+
+        textarea {
+          background: transparent;
+          margin: 0px;
+          border: 0px;
+          padding: 0px;
+          text-align: center;
+          resize: none;
+        }
+
+        textarea:not(.browser-default):focus:not([readonly]) {
+          border: 0;
+          box-shadow: none;
         }
       }
     }
   }
+}
+
+
+.role-tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    background-color: rgba(255,255,255,.9);
+    border: 2px solid $purple;
+    color: black;
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    z-index: 1;
+}
+
+th a:hover ~ .role-tooltiptext {
+    visibility: visible;
+}
+
+.role-tooltiptext:after {
+  position: absolute;
+  bottom: -9px;
+  left: 80%;
+  margin-left: -9px;
+  width: 0;
+  border-top: 9px solid $purple;
+  border-right: 9px solid transparent;
+  border-left: 9px solid transparent;
+  content: " ";
+  font-size: 0;
+  line-height: 0;
 }

@@ -10,40 +10,48 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!-- Compiled and minified CSS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script defer="defer" src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   </head>
 
   <body>
-    <div class="row" id="entire-page">
-      <div class="col s2">
-        <div class="sidemenu">
-          <div class="title-corner">
-            <i class="far fa-handshake fa-3x"></i>
-            <div>
-              <p class="caption-font">Collaboration Contracts</p>
-            </div>
-          </div>
-          <div class="sidemenu-content">
+    <div id="entire-page">
 
+      <div class="row" id="nav-bar">
+        <div class="title-corner sidemenu col s2">
+          <a href="/">
+            <i class="far fa-handshake fa-3x"></i>
+          </a>
+          <div>
+            <p class="caption-font">Collaboration Contracts</p>
           </div>
         </div>
-      </div>
-      <div class="col s10">
-        <div class="top-nav">
+        <div class="top-nav col s10">
           <h1 class="page-title"><%= @page_title %></h1>
           <div class="avatar-corner">
             <p>Username</p>
             <%= image_tag "default_avatar.png", class: "responsive-img" %>
           </div>
         </div>
-        <div class="main-container">
-          <%= render "partials/flash" %>
-          <%= yield %>
+      </div>
+
+      <div class="row" id="main-body">
+        <div class="col s2">
+          <div class="sidemenu-content"></div>
+        </div>
+        <div class="col s10">
+          <div class="main-container">
+            <%= render "partials/flash" %>
+            <%= yield %>
+          </div>
         </div>
       </div>
+
     </div>
   </body>
-</html>
+  <script>
+    $('.sidemenu-content').css('height', $('#main-body').height())
+  </script>
+</html
