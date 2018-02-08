@@ -44,7 +44,7 @@
       td {
         border-left: 1px $light-gray solid;
         border-right: 1px $light-gray solid;
-        padding: 5px 0;
+        padding: 5px 0 0 0;
 
         &:last-child {
           border-right: 0px;
@@ -59,19 +59,21 @@
           text-align: right;
           font-weight: lighter;
           // padding-right: 10px;
-          input[type=text]:first-child {
+          textarea:first-child {
             color: white;
           }
         }
 
-        input[type=text] {
+        textarea {
           background: transparent;
           margin: 0px;
           border: 0px;
+          padding: 0px;
           text-align: center;
+          resize: none;
         }
 
-        input[type=text]:not(.browser-default):focus:not([readonly]) {
+        textarea:not(.browser-default):focus:not([readonly]) {
           border: 0;
           box-shadow: none;
         }
