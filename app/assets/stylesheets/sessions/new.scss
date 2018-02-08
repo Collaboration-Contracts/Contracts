@@ -36,12 +36,15 @@
   }
   // for future reference if we want to use colors to show live validation checks!
   /* valid color */
-  .input-field input[type=text].valid {
+  .input-field input[type=text].valid,
+  .input-field input[type=password].valid
+   {
     border-bottom: 1px solid $purple;
     box-shadow: 0 1px 0 0 #000;
   }
   /* invalid color */
-  .input-field input[type=text].invalid {
+  .input-field input[type=text].invalid,
+  .input-field input[type=password].invalid {
     border-bottom: 1px solid $purple;
     box-shadow: 0 1px 0 0 #000;
   }
