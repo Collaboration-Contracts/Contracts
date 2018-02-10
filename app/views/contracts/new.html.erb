@@ -16,12 +16,12 @@
       <thead>
         <tr>
           <th></th>
-          <% ROLES.each do |k,v| %>
+          <% ROLES.each do |roleName,roleDetails| %>
             <th>
-              <%= k %>
+              <%= roleName %>
               <div class="icon-container">
                 <a class='material-icons'>info</a>
-                <span class="role-tooltiptext"><strong><%= v[:title] %></strong><br><%= v[:action] %></span>
+                <span class="role-tooltiptext"><strong><%= roleDetails[:title] %></strong><br><%= roleDetails[:action] %></span>
               </div>
             </th>
           <% end %>
