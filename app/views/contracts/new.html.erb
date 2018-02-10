@@ -17,9 +17,12 @@
         <tr>
           <th></th>
           <% ROLES.each do |k,v| %>
-            <th><%= k %>
-              <a class='material-icons'> info</a>
-              <span class="role-tooltiptext"><%= v[:action] %></span>
+            <th>
+              <%= k %>
+              <div class="icon-container">
+                <a class='material-icons'>info</a>
+                <span class="role-tooltiptext"><strong><%= v[:title] %></strong><br><%= v[:action] %></span>
+              </div>
             </th>
           <% end %>
         </tr>
