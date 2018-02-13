@@ -13,3 +13,8 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+//forces FontAwesome to realod
+$(document).on('turbolinks:load', function() {
+  FontAwesome.dom.i2svg();
+});
