@@ -111,6 +111,11 @@
     color: white;
     background-color: $brown;
     min-height: calc(100vh - 74px);
+
+    .user-links {
+      padding-top: 20px;
+      text-align: center;
+    }
   }
 
   .main-container {

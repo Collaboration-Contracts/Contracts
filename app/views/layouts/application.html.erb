@@ -39,7 +39,23 @@
 
       <div class="row" id="main-body">
         <div class="col s2">
-          <div class="sidemenu-content"></div>
+          <div class="sidemenu-content">
+            <div class="user-links">
+              <%= link_to 'Login', '#login-modal', class: 'modal-trigger' %>
+
+              <div id="login-modal" class="modal">
+                <div class="modal-content">
+                  <h4>Login</h4>
+                  <div class="json-flash-container">
+
+                  </div>
+                  <div class="login-form">
+                    <%= render "partials/login_form" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="col s10">
           <div class="main-container">
@@ -53,5 +69,34 @@
   </body>
   <script>
     $('.sidemenu-content').css('height', $('#main-body').height())
+
+    $(document).on('turbolinks:load', function() {
+      $('#login-modal').modal();
+
+      $('#login-modal').find('.submit-btn').on('click', function(e){
+        e.preventDefault();
+        var $form = $(this).parent();
+        var data = $form.serialize();
+        var action = $form.attr("action");
+
+        $.ajax({
+          url: action,
+          data: data,
+          method: 'POST',
+          dataType: 'json',
+        }).done(function(resp) {
+          if (resp.status === 204) {
+            $form.find('input').val('');
+            $('#login-modal').modal('close');
+          } else if (resp.status === 422) {
+            $('.json-flash-container').html(resp.attachmentPartial);
+          }
+        }).fail(function(err) {
+          console.log(err);
+        })
+      })
+    });
+
+
   </script>
 </html

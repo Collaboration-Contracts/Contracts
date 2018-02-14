@@ -11,11 +11,22 @@ class SessionsController < ApplicationController
       # Save the user id inside the browser cookie. This is how we keep the user
       # logged in when they navigate around our website.
       session[:user_id] = user.id
-      redirect_to dashboard_path
+
+      if request.xhr?
+        render json: { message: "Login", status: 204 }
+      else
+        redirect_to dashboard_path
+      end
+
     else
       assign_login_flash_message
       flash[:danger] = [@notice]
-      redirect_to login_path
+
+      if request.xhr?
+        render :json => { :attachmentPartial => render_to_string('partials/_flash', :layout => false), status: 422 }
+      else
+        redirect_to login_path
+      end
     end
   end
 
