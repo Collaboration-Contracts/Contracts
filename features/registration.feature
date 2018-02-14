@@ -3,10 +3,19 @@ Feature:  In order to be able to save and work with my contracts
           I want to register an account
 
 
+@dev_ready
+Scenario: pop-up has title
+  When I am on the registration pop-up
+  Then I view "Registration" in the pop-up title
 
-  Scenario: Page has title
-    When I am on the registration page
-    Then I view "Registration" in the page title
+@dev_ready
+Scenario: register from homepage and stay on homepage
+  Given I am on the homepage
+  When I register
+  Then I have an account
+  And I am on the homepage
+  And I cannot register again
+#basically we want to confirm that the register link is gone in the nav menu
 
   Scenario: register with username and password
     Given I enter a username
