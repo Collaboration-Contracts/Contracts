@@ -43,34 +43,35 @@
 </div>
 
 <script type="text/javascript">
-  const emptyRow = $('tbody').find('tr').clone();
+  $( document ).on('turbolinks:load', function() {
+    const emptyRow = $('tbody').find('tr').clone();
 
-  function addRow() {
-    $('tbody tr').length <= 10 && $('.contract-table').find('tbody').append(emptyRow.clone());
-  }
+    function addRow() {
+      $('tbody tr').length <= 10 && $('.contract-table').find('tbody').append(emptyRow.clone());
+    }
 
-  var $titleInput = $('.contract-title').find('input');
-  var $descriptionInput = $('.contract-description').find('input');
+    var $titleInput = $('.contract-title').find('input');
+    var $descriptionInput = $('.contract-description').find('input');
 
-  var ogTitleText = "Add a Contract Title";
-  var ogDescText = "Add a Contract Description";
+    var ogTitleText = "Add a Contract Title";
+    var ogDescText = "Add a Contract Description";
 
-  $titleInput.focusin(function() {
-    $titleInput.next().text('Contract Title');
+    $titleInput.focusin(function() {
+      $titleInput.next().text('Contract Title');
+    })
+
+    $descriptionInput.focusin(function() {
+      $descriptionInput.next().text('Description');
+    })
+
+    $titleInput.focusout(function() {
+      $titleInput.val().length === 0 && $titleInput.next().text(ogTitleText);
+    })
+
+    $descriptionInput.focusout(function() {
+      $descriptionInput.val().length === 0 && $descriptionInput.next().text(ogDescText);
+    })
   })
-
-  $descriptionInput.focusin(function() {
-    $descriptionInput.next().text('Description');
-  })
-
-  $titleInput.focusout(function() {
-    $titleInput.val().length === 0 && $titleInput.next().text(ogTitleText);
-  })
-
-  $descriptionInput.focusout(function() {
-    $descriptionInput.val().length === 0 && $descriptionInput.next().text(ogDescText);
-  })
-
 
   // for when table didn't use text areas - leaving this in case we revert //
   ///////////////////////////////////////////////////////////////////////////
