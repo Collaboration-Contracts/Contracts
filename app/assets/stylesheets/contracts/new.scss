@@ -94,10 +94,14 @@
       td {
         border-left: 1px $light-gray solid;
         border-right: 1px $light-gray solid;
-        padding: 5px 0 0 0;
+        padding: 0px 0 0 0;
 
         &:last-child {
           border-right: 0px;
+        }
+
+        &:first-child {
+          padding: 5px 0 0 0;
         }
 
         &:nth-child(1) {
@@ -123,6 +127,8 @@
           padding: 0px;
           text-align: center;
           resize: none;
+          height: 3.5em;
+          outline: none;
         }
 
         textarea:not(.browser-default):focus:not([readonly]) {
