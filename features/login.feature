@@ -3,12 +3,12 @@ Feature:	In order to prevent other people from seeing my contracts
           I want to securely login to my account
 
 
-@dev_ready
+
 Scenario: login pop-up has title
   When I am on the login pop-up
   Then I view "Login" in the pop-up title
 
-@dev_ready
+
 Scenario: login from homepage and stay on homepage
   Given I have registered an account
   And I am on the homepage

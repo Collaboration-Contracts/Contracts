@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get   'dashboard',  to: 'contracts#index'
   get   'login',      to: 'sessions#new'
   post  'login',      to: 'sessions#create'
+  get   'signout',    to: 'sessions#destroy'
 end

@@ -1,3 +1,16 @@
+When ("I am on the login pop-up") do
+  visit root_path
+  click_link('login-modal-link')
+end
+
+Then("I view {string} in the pop-up title") do |string|
+  find("##{string.downcase}-modal").find('.modal-title').assert_text(string)
+end
+
+And ("I cannot login again") do
+  expect(page).not_to  have_selector('#login-modal-link')
+end
+
 Given("I have registered an account") do
   User.create(:username => "TheEdge", :password => "password")
 end
@@ -11,7 +24,7 @@ Then("I view {string} in the page title") do |string|
 end
 
 When("I login with a registered username and password") do
-  visit login_path
+  click_link('login-modal-link')
   fill_in 'username', with: "TheEdge"
   fill_in 'password', with: "password"
   click_button("Login")
