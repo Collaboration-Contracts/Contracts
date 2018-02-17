@@ -56,9 +56,9 @@ RSpec.describe UsersController, type: :controller do
           expect(flash[:danger]).to be_falsey
         end
 
-        it "redirects to the dashboard" do
+        it "redirects to the homepage" do
           post_user_params(username, 'password')
-          expect(response).to redirect_to(dashboard_path)
+          expect(response).to redirect_to(root_path)
         end
       end
     end

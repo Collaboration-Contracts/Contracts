@@ -14,8 +14,8 @@
     z-index: 1;
 }
 
-#username:focus ~ .register-tooltiptext,
-#password:focus ~ .register-tooltiptext {
+#reg-username:focus ~ .register-tooltiptext,
+#reg-password:focus ~ .register-tooltiptext {
     visibility: visible;
 }
 

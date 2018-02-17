@@ -13,9 +13,9 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
 
       if request.xhr?
-        render json: { message: "Login", status: 204 }
+        render json: { message: "Login Successful", status: 204 }
       else
-        redirect_to dashboard_path
+        redirect_to root_path
       end
 
     else

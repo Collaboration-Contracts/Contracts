@@ -31,7 +31,7 @@
         <div class="top-nav col s10">
           <h1 class="page-title"><%= @page_title %></h1>
           <div class="avatar-corner">
-            <p>Username</p>
+            <p><%= current_username %></p>
             <%= image_tag "default_avatar.png", class: "responsive-img" %>
           </div>
         </div>
@@ -42,18 +42,9 @@
           <div class="sidemenu-content">
             <% unless current_user %>
               <div class="user-links">
-                <% if show_login_links? %>
-                  <%= link_to 'Login', '#login-modal', class: 'modal-trigger', id: 'login-modal-link' %>
-                  <div id="login-modal" class="modal">
-                    <div class="modal-content">
-                      <h4 class="modal-title">Login</h4>
-                      <div class="json-flash-container"></div>
-                      <div class="login-form">
-                        <%= render "partials/login_form" %>
-                      </div>
-                    </div>
-                  </div>
-                <% end %>
+                <%= render 'partials/login_modal' unless on_login? %>
+                <%= or?.html_safe %>
+                <%= (render 'partials/reg_modal', :@user => @user) unless on_reg? %>
               </div>
             <% end %>
           </div>
@@ -70,28 +61,5 @@
   </body>
   <script>
     $('.sidemenu-content').css('height', $('#main-body').height())
-
-    $(document).on('turbolinks:load', function () {
-      $('#login-modal').modal();
-
-      $('#login-modal').find('.submit-btn').on('click', function (e) {
-        e.preventDefault();
-        var $form = $(this).parent();
-        var data = $form.serialize();
-        var action = $form.attr("action");
-
-        $.ajax({url: action, data: data, method: 'POST', dataType: 'json'}).done(function (resp) {
-          if (resp.status === 204) {
-            $form.find('input').val('');
-            $('#login-modal').modal('close');
-            $('.user-links').hide();
-          } else if (resp.status === 422) {
-            $('.json-flash-container').html(resp.attachmentPartial);
-          }
-        }).fail(function (err) {
-          console.log(err);
-        })
-      })
-    });
   </script>
 </html

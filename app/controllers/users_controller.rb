@@ -3,16 +3,26 @@ class UsersController < ApplicationController
 
   def new
     @page_title = "Registration"
-    @user = User.new()
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to dashboard_path
+      session[:user_id] = @user.id
+      if request.xhr?
+        render json: { message: "Register Successful", status: 204 }
+      else
+        redirect_to root_path
+      end
+
     else
       flash[:danger] = @user.custom_error_messages
-      redirect_to register_path
+
+      if request.xhr?
+        render :json => { :attachmentPartial => render_to_string('partials/_flash', :layout => false), status: 422 }
+      else
+        redirect_to register_path
+      end
     end
   end
 

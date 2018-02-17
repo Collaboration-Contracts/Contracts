@@ -25,8 +25,8 @@ end
 
 When("I login with a registered username and password") do
   click_link('login-modal-link')
-  fill_in 'username', with: "TheEdge"
-  fill_in 'password', with: "password"
+  fill_in 'login-username', with: "TheEdge"
+  fill_in 'login-password', with: "password"
   click_button("Login")
 end
 
@@ -36,9 +36,9 @@ end
 
 When("I login with a non-registered username and password") do
   visit login_path
-  fill_in 'username', with: "Not TheEdge"
-  fill_in 'password', with: "password"
-  click_button
+  fill_in 'login-username', with: "Not TheEdge"
+  fill_in 'login-password', with: "password"
+  click_button("Login")
 end
 
 Then("I view the Login form") do
@@ -51,8 +51,8 @@ end
 
 When("I login with a registered username and no password") do
   visit login_path
-  fill_in 'username', with: "TheEdge"
-  click_button
+  fill_in 'login-username', with: "TheEdge"
+  click_button("Login")
 end
 
 And("I see a blank password error message") do
@@ -60,13 +60,13 @@ And("I see a blank password error message") do
 end
 
 And("I see a blank password field") do
-  find_field("password").value.blank?
+  find_field("login-password").value.blank?
 end
 
 When("I login with no username and a registered password") do
   visit login_path
-  fill_in 'password', with: "password"
-  click_button
+  fill_in 'login-password', with: "password"
+  click_button("Login")
 end
 
 And("I see a blank username error message") do
@@ -75,7 +75,7 @@ end
 
 When("I login with a registered username and a non-matching password") do
   visit login_path
-  fill_in 'username', with: 'TheEdge'
-  fill_in 'password', with: 'Not password'
-  click_button
+  fill_in 'login-username', with: 'TheEdge'
+  fill_in 'login-password', with: 'Not password'
+  click_button("Login")
 end

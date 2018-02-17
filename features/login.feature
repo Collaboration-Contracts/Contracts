@@ -3,26 +3,16 @@ Feature:	In order to prevent other people from seeing my contracts
           I want to securely login to my account
 
 
-
 Scenario: login pop-up has title
   When I am on the login pop-up
   Then I view "Login" in the pop-up title
-
 
 Scenario: login from homepage and stay on homepage
   Given I have registered an account
   And I am on the homepage
   When I login with a registered username and password
-  Then I am on the homepage
+  Then I am still on the homepage
   And I cannot login again
-#basically we want to confirm that the login link is gone in the nav menu
-
-#this one should break once we complete login/register from nav menu
-@dev_ready
-Scenario: login with username and password
-  Given I have registered an account
-  When I login with a registered username and password
-  Then I view the CC dashboard
 
 Scenario: login attempt with non-registered username and password
   Given I have registered an account

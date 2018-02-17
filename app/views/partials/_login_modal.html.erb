@@ -1,0 +1,10 @@
+<%= link_to 'Login', '#login-modal', class: 'modal-trigger', id: 'login-modal-link' %>
+<div id="login-modal" class="modal">
+  <div class="modal-content">
+    <h4 class="modal-title">Login</h4>
+    <div class="json-flash-container"></div>
+    <div class="login-form">
+      <%= render "partials/login_form" %>
+    </div>
+  </div>
+</div>

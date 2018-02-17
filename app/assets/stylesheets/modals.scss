@@ -1,10 +1,40 @@
+@import "variables";
+
 .modal {
   padding: 30px;
   max-width: 550px;
+  max-height: 90%;
   color: black;
-  min-height: none;
-  
+
   .flash-container {
     padding-top: 0px;
+  }
+
+  form .submit-btn {
+    position: relative;
+    float: right;
+  }
+
+
+
+  &#registration-modal {
+    .register-tooltiptext {
+      right: 0px;
+      bottom: 60px;
+    }
+
+    .register-tooltiptext:after {
+      position: absolute;
+      bottom: -19px;
+      left: 25px;
+      margin-left: -9px;
+      width: 0;
+      border-right: 9px solid transparent;
+      border-left: 9px solid transparent;
+      border-top: 9px solid $purple;
+      content: " ";
+      font-size: 0;
+      line-height: 0;
+    }
   }
 }

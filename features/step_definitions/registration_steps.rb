@@ -1,10 +1,15 @@
+When ("I am on the registration pop-up") do
+  visit root_path
+  click_link('register-modal-link')
+end
+
 Given("I enter a username") do
   visit register_path
-  fill_in 'username', with: "TheEdge"
+  fill_in 'reg-username', with: "TheEdge"
 end
 
 When("I am on the registration page") do
-    visit register_path
+  visit register_path
 end
 
 # same test ran in login_steps is being checked here
@@ -13,7 +18,18 @@ end
 # end
 
 And("I enter a password") do
-  fill_in 'password', with: "password"
+  fill_in 'reg-password', with: "password"
+end
+
+When("I register with a valid username and password") do
+  click_link('register-modal-link')
+  fill_in 'reg-username', with: "TheEdge"
+  fill_in 'reg-password', with: "password"
+  click_button("Register")
+end
+
+And ("I cannot register again") do
+  expect(page).not_to  have_selector('#register-modal-link')
 end
 
 When ("I register") do
@@ -26,7 +42,7 @@ Then ("I have an account") do
 end
 
 And ("I do not enter a password") do
-  fill_in 'password', with: ""
+  fill_in 'reg-password', with: ""
 end
 
 Then ("I do not have an account") do
@@ -35,12 +51,12 @@ end
 
 And("I enter {string} for the username") do |username|
   visit register_path
-  fill_in 'username', with: username
+  fill_in 'reg-username', with: username
 end
 
 And ("I enter {string} for the password") do |password|
   visit register_path
-  fill_in 'password', with: password
+  fill_in 'reg-password', with: password
 end
 
 Then("I have an account as {string}") do |username|
