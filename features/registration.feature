@@ -3,23 +3,41 @@ Feature:  In order to be able to save and work with my contracts
           I want to register an account
 
 
-Scenario: pop-up has title
-  When I am on the registration pop-up
-  Then I view "Registration" in the pop-up title
+  Scenario: pop-up has title
+    When I am on the registration pop-up
+    Then I view "Registration" in the pop-up title
 
-Scenario: register from homepage and stay on homepage
-  Given I am on the homepage
-  When I register with a valid username and password
-  Then I have an account
-  And I am still on the homepage
-  And I cannot register again
-#basically we want to confirm that the register link is gone in the nav menu
+  Scenario: register from homepage and stay on homepage
+    Given I am on the homepage
+    When I register with a valid username and password
+    Then I have an account
+    And I am still on the homepage
+    And I cannot register again
+
+  @dev_ready
+  Scenario: register from homepage and see my username
+    Given I am on the homepage
+    When I register with a valid username and password
+    When I register
+    Then I see that I am the current user
+    # The username should be displayed next to the user icon
 
   Scenario: register with username and password
     Given I enter a username
     And I enter a password
     When I register
     Then I have an account
+
+  # This may not read clearly. The idea is that I attempted
+  # to register an existing user and got an error message.
+  # I then immediately register successfully and refresh the
+  # screen. I should NOT see the original (or any) error message.
+  @dev_ready
+  Scenario: register error messages do not show up on page refresh
+    Given I register with a registered username and password
+    When I register with a valid username and password
+    And I refresh the page
+    Then I do not see an existing username error message
 
   Scenario Outline: no account with blank username and/or password
     Given I enter '<username>' for the username
@@ -37,7 +55,7 @@ Scenario: register from homepage and stay on homepage
   Scenario Outline: register with valid username
     Given I enter '<valid_username>' for the username
     And I enter a password
-	  When I register
+    When I register
     Then I have an account as '<valid_username>'
 
     Examples:
