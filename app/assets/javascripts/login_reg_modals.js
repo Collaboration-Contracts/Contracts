@@ -11,6 +11,7 @@ $(document).on('turbolinks:load', function() {
 
     $modal.find('.submit-btn').on('click', function (e) {
       e.preventDefault();
+      console.log("TRIGGER WARNING")
       var $form = $(this).parent();
       var data = $form.serialize();
       var action = $form.attr("action");
@@ -20,6 +21,7 @@ $(document).on('turbolinks:load', function() {
           $form.find('input').val('');
           $modal.modal('close');
           $('.user-links').hide();
+          $('.avatar-corner').html(resp.avatar_corner);
         } else if (resp.status === 422) {
           $('.json-flash-container').html(resp.attachmentPartial);
         }

@@ -32,29 +32,29 @@ Feature:	In order to prevent other people from seeing my contracts
     Then I view the Login form
     And I see a blank username error message
     And I see a blank password field
-
+#TODO: Review with Diane & maybe Doc how to separate page vs modal
   Scenario: login attempt with non-matching username and password
+  # added When I am on the login page to add reusability to
+    # When I login with registered username and non....
+    When I am on the login page
     Given I have registered an account
     When I login with a registered username and a non-matching password
     Then I view the Login form
     And I see a bad username or password error message
     And I see a blank password field
 
-  @dev_ready
   Scenario: login from homepage and see my username
     Given I have registered an account
     And I am on the homepage
     When I login with a registered username and password
     Then I see that I am the current user
 
-
-  # This may not read clearly. The idea is that I attempted
-  # to login with the wrong password and got an error message.
-  # I then immediately login successfully and refresh the
-  # screen. I should NOT see the original (or any) error message.
-  @dev_ready
+# we need to figure out how to get cucumber to work with ajax.
+# right now when you submit the form it runs the code for html in
+# our controller.
+  @wip
   Scenario: login error messages do not show up on page refresh
+    When I am on the login pop-up
     Given I login with a registered username and a non-matching password
-    When I login with a registered username and password
     And I refresh the page
     Then I do not see a bad username or password error message

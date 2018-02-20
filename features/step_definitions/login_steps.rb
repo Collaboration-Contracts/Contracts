@@ -30,6 +30,10 @@ When("I login with a registered username and password") do
   click_button("Login")
 end
 
+Then ("I see that I am the current user") do
+  page.assert_text("TheEdge")
+end
+
 Then("I view the CC dashboard") do
   page.assert_text("Dashboard")
 end
@@ -74,8 +78,18 @@ And("I see a blank username error message") do
 end
 
 When("I login with a registered username and a non-matching password") do
-  visit login_path
   fill_in 'login-username', with: 'TheEdge'
   fill_in 'login-password', with: 'Not password'
   click_button("Login")
+end
+
+# selenium webdriver when added properly I think allows us to do
+# something like this: driver.navigate.refresh as well as
+# allow for ajax
+And ("I refresh the page") do
+  visit URI.parse(current_url)
+end
+
+Then("I do not see a bad username or password error message") do
+  page.assert_no_text(INVALID_LOGIN)
 end

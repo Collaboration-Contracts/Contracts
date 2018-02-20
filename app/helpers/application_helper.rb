@@ -11,7 +11,6 @@ module ApplicationHelper
     end
   end
 
-# TODO: needs updated to still show on register page. form id's are an issue.
   def on_login?
     controller_name == "sessions"
   end

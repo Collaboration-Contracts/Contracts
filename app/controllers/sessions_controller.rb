@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  #TODO: have review with doc about clearing flash
+after_action :clear_flash, only: [:create], if: -> { @from_js }
 
   def new
     @page_title = "Login"
@@ -11,21 +13,19 @@ class SessionsController < ApplicationController
       # Save the user id inside the browser cookie. This is how we keep the user
       # logged in when they navigate around our website.
       session[:user_id] = user.id
-
-      if request.xhr?
-        render json: { message: "Login Successful", status: 204 }
-      else
-        redirect_to root_path
+      respond_to do |format|
+        format.html {redirect_to root_path}
+        format.js { render json: { :message => "Login Successful", :avatar_corner => render_to_string('partials/_avatar_corner', :layout => false), status: 204 } }
       end
-
     else
       assign_login_flash_message
       flash[:danger] = [@notice]
-
-      if request.xhr?
-        render :json => { :attachmentPartial => render_to_string('partials/_flash', :layout => false), status: 422 }
-      else
-        redirect_to login_path
+      respond_to do |format|
+        format.html { redirect_to login_path }
+        format.js do
+          @from_js = true
+          render json: { :attachmentPartial => render_to_string('partials/_flash', :layout => false), status: 422 }
+        end
       end
     end
   end
@@ -39,6 +39,10 @@ class SessionsController < ApplicationController
 
   def session_params
     params.require(:session).permit(:username, :password)
+  end
+
+  def clear_flash
+    flash.delete(:danger)
   end
 
   def assign_login_flash_message
