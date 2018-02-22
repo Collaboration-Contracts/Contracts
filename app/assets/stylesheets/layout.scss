@@ -20,11 +20,6 @@
   ul > li {
     font-size: 1.2em;
     margin-bottom: 3px;
-
-    &::before {
-      content: "○ ";
-      color: $purple;
-    }
   }
 }
 
