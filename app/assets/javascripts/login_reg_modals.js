@@ -11,7 +11,6 @@ $(document).on('turbolinks:load', function() {
 
     $modal.find('.submit-btn').on('click', function (e) {
       e.preventDefault();
-      console.log("TRIGGER WARNING")
       var $form = $(this).parent();
       var data = $form.serialize();
       var action = $form.attr("action");
