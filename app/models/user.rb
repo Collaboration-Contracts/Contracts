@@ -17,7 +17,7 @@ class User < ApplicationRecord
     messages << check_blank_username(username)
     messages << check_username_format(username)
     messages << BLANK_REGISTER_PARAMS if password.nil?
-    messages << errors.messages[:password]
+    messages << (errors.messages[:password] -= ["can't be blank"])
 
     User.find_by(username: username) ? messages << EXISTING_USERNAME : nil
 

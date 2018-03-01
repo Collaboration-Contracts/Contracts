@@ -1,15 +1,3 @@
 <div class="register-form col s10 offset-s1 m6 offset-m3 l4 offset-l4">
-  <%= form_for @user do |f| %>
-  <div class="username input-field">
-    <%= f.text_field :username, id: 'username', class: "validate" %>
-    <%= f.label :username %>
-    <span class="register-tooltiptext"><%= USERNAME_TOOLTIP_TEXT %></span>
-  </div>
-  <div class="password input-field">
-    <%= f.text_field :password, id: 'password', type: 'password', class: "validate" %>
-    <%= f.label :password, "Password" %>
-    <span class="register-tooltiptext"><%= INVALID_PASSWORD %></span>
-  </div>
-  <%= button_tag "Register", :class => "btn waves-effect waves-purple submit-btn" %>
-  <% end %>
+  <%= render 'partials/register_form', :@user => @user %>
 </div>

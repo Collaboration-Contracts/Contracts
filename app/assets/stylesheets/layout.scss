@@ -6,6 +6,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  text-align: left;
 
   .material-icons {
     color: $purple;
@@ -20,11 +21,6 @@
   ul > li {
     font-size: 1.2em;
     margin-bottom: 3px;
-
-    &::before {
-      content: "○ ";
-      color: $purple;
-    }
   }
 }
 
@@ -111,6 +107,14 @@
     color: white;
     background-color: $brown;
     min-height: calc(100vh - 74px);
+
+    .user-links {
+      padding-top: 20px;
+      text-align: center;
+      .modal-trigger {
+        color: $blue;
+      }
+    }
   }
 
   .main-container {

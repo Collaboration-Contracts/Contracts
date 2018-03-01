@@ -1,18 +1,30 @@
 class UsersController < ApplicationController
   protect_from_forgery with: :exception
+  after_action :clear_flash, only: [:create], if: -> { @from_js }
 
   def new
     @page_title = "Registration"
-    @user = User.new()
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to dashboard_path
+      session[:user_id] = @user.id
+      if request.xhr?
+        render json: { message: "Register Successful", :avatar_corner => render_to_string('partials/_avatar_corner', :layout => false), status: 204 }
+      else
+        redirect_to root_path
+      end
+
     else
       flash[:danger] = @user.custom_error_messages
-      redirect_to register_path
+
+      if request.xhr?
+        render :json => { :attachmentPartial => render_to_string('partials/_flash', :layout => false), status: 422 }
+        @from_js = true
+      else
+        redirect_to register_path
+      end
     end
   end
 
@@ -20,5 +32,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :password)
+  end
+
+  def clear_flash
+    flash.delete(:danger)
   end
 end

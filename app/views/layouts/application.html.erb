@@ -31,15 +31,22 @@
         <div class="top-nav col s10">
           <h1 class="page-title"><%= @page_title %></h1>
           <div class="avatar-corner">
-            <p>Username</p>
-            <%= image_tag "default_avatar.png", class: "responsive-img" %>
+            <%= render 'partials/avatar_corner' %>
           </div>
         </div>
       </div>
 
       <div class="row" id="main-body">
         <div class="col s2">
-          <div class="sidemenu-content"></div>
+          <div class="sidemenu-content">
+            <% unless current_user %>
+              <div class="user-links">
+                <%= render 'partials/login_modal' unless on_login? %>
+                <%= or?.html_safe %>
+                <%= (render 'partials/reg_modal', :@user => @user) unless on_reg? %>
+              </div>
+            <% end %>
+          </div>
         </div>
         <div class="col s10">
           <div class="main-container">
