@@ -1,3 +1,5 @@
+include WaitForAjax
+
 When ("I am on the login pop-up") do
   visit root_path
   click_link('login-modal-link')
@@ -8,6 +10,7 @@ Then("I view {string} in the pop-up title") do |string|
 end
 
 And ("I cannot login again") do
+  wait_for_ajax
   expect(page).not_to  have_selector('#login-modal-link')
 end
 
@@ -87,6 +90,7 @@ end
 # something like this: driver.navigate.refresh as well as
 # allow for ajax
 And ("I refresh the page") do
+  # driver.navigate.refresh
   visit URI.parse(current_url)
 end
 

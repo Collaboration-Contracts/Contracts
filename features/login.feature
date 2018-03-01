@@ -32,9 +32,10 @@ Feature:	In order to prevent other people from seeing my contracts
     Then I view the Login form
     And I see a blank username error message
     And I see a blank password field
+
 #TODO: Review with Diane & maybe Doc how to separate page vs modal
   Scenario: login attempt with non-matching username and password
-  # added When I am on the login page to add reusability to
+  # added When I am on the login page to add reusability  .to
     # When I login with registered username and non....
     When I am on the login page
     Given I have registered an account
@@ -49,10 +50,6 @@ Feature:	In order to prevent other people from seeing my contracts
     When I login with a registered username and password
     Then I see that I am the current user
 
-# we need to figure out how to get cucumber to work with ajax.
-# right now when you submit the form it runs the code for html in
-# our controller.
-  @wip
   Scenario: login error messages do not show up on page refresh
     When I am on the login pop-up
     Given I login with a registered username and a non-matching password

@@ -1,3 +1,5 @@
+include WaitForAjax
+
 When ("I am on the registration pop-up") do
   visit root_path
   click_link('register-modal-link')
@@ -38,6 +40,7 @@ When ("I register") do
 end
 
 Then ("I have an account") do
+  wait_for_ajax
   expect(User.count).to eq(1)
 end
 
