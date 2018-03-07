@@ -6,7 +6,7 @@ When("I am on the login page") do
     visit login_path
 end
 
-Then("I view {string} in the page title") do |string|
+Then("I see {string} in the page title") do |string|
   within('.page-title') { assert_text(string) }
 end
 
@@ -17,7 +17,7 @@ When("I login with a registered username and password") do
   click_button("Login")
 end
 
-Then("I view the CC dashboard") do
+Then("I see the CC dashboard") do
   page.assert_text("Dashboard")
 end
 
@@ -28,7 +28,7 @@ When("I login with a non-registered username and password") do
   click_button
 end
 
-Then("I view the Login form") do
+Then("I see the Login form") do
   find("div.login-form")
 end
 
