@@ -6,7 +6,7 @@ Feature:  In order to be able to save and work with my contracts
 @dev_ready
 Scenario: pop-up has title
   When I am on the registration pop-up
-  Then I view "Registration" in the pop-up title
+  Then I see "Registration" in the pop-up title
 
 @dev_ready
 Scenario: register from homepage and stay on homepage
@@ -28,7 +28,7 @@ Scenario: register from homepage and stay on homepage
     And I enter '<password>' for the password
     When I register
     Then I do not have an account
-    And I view a required fields error message
+    And I see a required fields error message
 
     Examples:
       | username  | password  |
@@ -55,7 +55,7 @@ Scenario: register from homepage and stay on homepage
     And I enter a password
     When I register
   	Then I do not have an account
-    And I view an invalid username error message
+    And I see an invalid username error message
 
     Examples:
       | invalid_username       |
@@ -69,11 +69,11 @@ Scenario: register from homepage and stay on homepage
     And I enter a password
     When I register
     Then I do not have an account
-    And I view an existing username error message
+    And I see an existing username error message
 
   Scenario: don't register & error with invalid password
     Given I enter a username
     And I enter 'Bono' for the password
     When I register
   	Then I do not have an account
-    And I view an invalid password error message
+    And I see an invalid password error message
