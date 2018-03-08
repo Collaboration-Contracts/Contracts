@@ -21,10 +21,12 @@ Scenario: save is enabled once I login and contract does not refresh
 Scenario: save contract and display title in my dashboard
   Given I enter 'New Contract' for the contract title
   When I save the contract
-  Then I see 'New Contract' in my dashboard
+  Then I see a saved contract confirmation message
+  And I see 'New Contract' in my dashboard
 
 Scenario: don't save contract if the title is blank
   Given I enter no contract title
   When I save the contract
-  Then I see the blank contract title error message
+  Then I see a blank contract title error message
+  And I do not see a saved contract confirmation message
   And I do not see 'New Contract' in my dashboard
