@@ -3,10 +3,9 @@ Feature:  In order to be able to save and work with my contracts
           I want to register an account
 
 
-@dev_ready
-Scenario: pop-up has title
-  When I am on the registration pop-up
-  Then I see "Registration" in the pop-up title
+  Scenario: pop-up has title
+    When I am on the registration pop-up
+    Then I see "Registration" in the pop-up title
 
   Scenario: register from homepage and stay on homepage
     Given I am on the homepage
@@ -15,7 +14,6 @@ Scenario: pop-up has title
     And I am still on the homepage
     And I cannot register again
 
-  @dev_ready
   Scenario: register from homepage and see my username
     Given I am on the homepage
     When I register with a valid username and password
@@ -29,11 +27,6 @@ Scenario: pop-up has title
     When I register
     Then I have an account
 
-  # This may not read clearly. The idea is that I attempted
-  # to register an existing user and got an error message.
-  # I then immediately register successfully and refresh the
-  # screen. I should NOT see the original (or any) error message.
-  @dev_ready
   Scenario: register error messages do not show up on page refresh
     Given I register with a registered username and password
     When I register with a valid username and password

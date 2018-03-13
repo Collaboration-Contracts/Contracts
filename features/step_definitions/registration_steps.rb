@@ -15,9 +15,9 @@ When("I am on the registration page") do
 end
 
 # same test ran in login_steps is being checked here
-# Then("I see {string} in the page title") do |string|
-#   within('.page-title') { assert_text(string) }
-# end
+Then("I see {string} in the pop-up title") do |string|
+  within('.modal-title') { assert_text(string) }
+end
 
 And("I enter a password") do
   fill_in 'reg-password', with: "password"
@@ -70,12 +70,21 @@ Given("the username {string} exists") do |username|
   @user_id = User.create(username: username, password: 'password').id
 end
 
+Given("I register with a registered username and password") do
+  User.create(username: "TheEdge", password: 'password')
+  visit root_path
+end
+
+Then("I do not see an existing username error message") do
+  page.assert_no_text(EXISTING_USERNAME)
+end
+
 And("I see a required fields error message") do
   page.assert_text(BLANK_REGISTER_PARAMS)
 end
 
 And("I see an invalid password error message") do
-    page.assert_text(INVALID_PASSWORD)
+  page.assert_text(INVALID_PASSWORD)
 end
 
 And("I see an invalid username error message") do
