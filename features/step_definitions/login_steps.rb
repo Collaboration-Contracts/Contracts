@@ -81,6 +81,7 @@ And("I see a blank username error message") do
 end
 
 When("I login with a registered username and a non-matching password") do
+  visit login_path
   fill_in 'login-username', with: 'TheEdge'
   fill_in 'login-password', with: 'Not password'
   click_button("Login")
