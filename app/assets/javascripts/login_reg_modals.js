@@ -21,6 +21,8 @@ $(document).on('turbolinks:load', function() {
           $modal.modal('close');
           $('.user-links').hide();
           $('.avatar-corner').html(resp.avatar_corner);
+          $('.sidemenu-content').html(resp.sidemenu);
+          $('.save-contract-options').find('button').attr('disabled', false);
         } else if (resp.status === 422) {
           $('.json-flash-container').html(resp.attachmentPartial);
         }

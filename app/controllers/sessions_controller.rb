@@ -15,7 +15,11 @@ after_action :clear_flash, only: [:create], if: -> { @from_js }
       session[:user_id] = user.id
       respond_to do |format|
         format.html {redirect_to root_path}
-        format.js { render json: { :message => "Login Successful", :avatar_corner => render_to_string('partials/_avatar_corner', :layout => false), status: 204 } }
+        format.js { render json: {
+          :message => "Login Successful",
+          :avatar_corner => render_to_string('partials/_avatar_corner', :layout => false),
+          :sidemenu => render_to_string('partials/_sidemenu_content', :layout => false),
+          status: 204 } }
       end
     else
       assign_login_flash_message

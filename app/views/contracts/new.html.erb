@@ -46,7 +46,7 @@
           <%= render 'partials/reg_modal', :@user => @user %>
         </div>
       <% end %>
-      <button type="button" name="button" disabled>Save</button>
+      <%= button_tag 'Save', { disabled: disabled_btn? } %>
     </div>
   </div>
 </div>

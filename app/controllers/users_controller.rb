@@ -11,7 +11,11 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       if request.xhr?
-        render json: { message: "Register Successful", :avatar_corner => render_to_string('partials/_avatar_corner', :layout => false), status: 204 }
+        render json: {
+          message: "Register Successful",
+          :avatar_corner => render_to_string('partials/_avatar_corner', :layout => false),
+          :sidemenu => render_to_string('partials/_sidemenu_content', :layout => false),
+          status: 204 }
       else
         redirect_to root_path
       end

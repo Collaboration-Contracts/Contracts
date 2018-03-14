@@ -27,7 +27,7 @@ Then("I see {string} in the page title") do |string|
 end
 
 When("I login with a registered username and password") do
-  click_link('login-modal-link')
+  within('.sidemenu-content'){ click_link('login-modal-link') }
   fill_in 'login-username', with: "TheEdge"
   fill_in 'login-password', with: "password"
   click_button("Login")

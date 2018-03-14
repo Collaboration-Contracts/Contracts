@@ -2,7 +2,7 @@ include WaitForAjax
 
 When ("I am on the registration pop-up") do
   visit root_path
-  click_link('register-modal-link')
+  within('.sidemenu-content'){ click_link('register-modal-link') }
 end
 
 Given("I enter a username") do
@@ -24,8 +24,8 @@ And("I enter a password") do
 end
 
 When("I register with a valid username and password") do
-  click_link('register-modal-link')
-  fill_in 'reg-username', with: "TheEdge"
+  within('.sidemenu-content'){ click_link('register-modal-link') }
+  fill_in 'reg-username', with: "TheEdge2"
   fill_in 'reg-password', with: "password"
   click_button("Register")
 end

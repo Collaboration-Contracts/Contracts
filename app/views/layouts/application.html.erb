@@ -39,13 +39,7 @@
       <div class="row" id="main-body">
         <div class="col s2">
           <div class="sidemenu-content">
-            <% unless current_user %>
-              <div class="user-links">
-                <%= render 'partials/login_modal' unless on_login? %>
-                <%= or?.html_safe %>
-                <%= (render 'partials/reg_modal', :@user => @user) unless on_reg? %>
-              </div>
-            <% end %>
+            <%= render 'partials/sidemenu_content' %>
           </div>
         </div>
         <div class="col s10">
