@@ -17,7 +17,7 @@ Feature:  In order to be able to save and work with my contracts
   Scenario: register from homepage and see my username
     Given I am on the homepage
     When I register with a valid username and password
-    When I register
+    # When I register
     Then I see that I am the current user
     # The username should be displayed next to the user icon
 
