@@ -1,4 +1,4 @@
-@in_requirements
+@in_requirements @wip
 Feature:	In order to execute a collaboration contract over several sessions
           As a contract owner
           I want to save a contract

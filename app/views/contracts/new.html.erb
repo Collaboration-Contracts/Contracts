@@ -39,6 +39,15 @@
         <% end %>
       </tbody>
     </table>
+    <div class="save-contract-options">
+      <% unless current_user %>
+        <div class="user-links">
+          <%= render 'partials/login_modal' %>
+          <%= render 'partials/reg_modal', :@user => @user %>
+        </div>
+      <% end %>
+      <button type="button" name="button" disabled>Save</button>
+    </div>
   </div>
 </div>
 
