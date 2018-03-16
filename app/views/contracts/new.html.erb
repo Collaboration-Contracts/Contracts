@@ -43,10 +43,12 @@
       <% unless current_user %>
         <div class="user-links">
           <%= render 'partials/login_modal' %>
+          or
           <%= render 'partials/reg_modal', :@user => @user %>
+          if you want to
         </div>
       <% end %>
-      <%= button_tag 'Save', { disabled: disabled_btn? } %>
+      <%= button_tag 'Save', { disabled: disabled_btn?, id: 'save-contract', class: 'btn waves-effect waves-purple' } %>
     </div>
   </div>
 </div>

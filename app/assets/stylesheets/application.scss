@@ -24,3 +24,19 @@ body {
 a {
   color: $blue;
 }
+
+.btn {
+  background-color: $purple;
+  &:hover {
+    background-color: rgba($purple, 0.8);
+  }
+  &:focus {
+    background-color: $purple;
+  }
+}
+
+.waves-effect.waves-purple {
+  .waves-ripple {
+    background-color: lighten($purple, 9);
+  }
+}
