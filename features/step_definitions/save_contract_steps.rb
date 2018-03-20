@@ -18,3 +18,13 @@ end
 And("I see the Login and Register links in the nav menu") do
   expect(page.find('.sidemenu-content')).to have_selector(".user-links")
 end
+
+
+
+When("I save the contract") do
+  click_button('Save')
+end
+
+Then("I see a saved contract confirmation message") do
+  page.assert_text('Yay! Your contract has been saved!')
+end

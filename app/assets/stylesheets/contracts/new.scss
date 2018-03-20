@@ -183,8 +183,10 @@ th a:hover ~ .role-tooltiptext {
   align-items: center;
   justify-content: flex-end;
   margin: 10px 0px;
+  .user-links {
+    padding-right: 10px;
+  }
   #save-contract {
-    margin-left: 10px;
     font-size: 0.8rem;
   }
 }

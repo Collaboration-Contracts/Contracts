@@ -8,11 +8,11 @@ end
 Given("I enter {string} for the contract title") do |string|
   visit root_path
   make_user
-  fill_in 'contract-title', with: string
+  fill_in 'contract[title]', with: string
 end
 
 Then("I see {string} for the contract title") do |string|
-  expect(find_field('contract-title').value).to eq string
+  expect(find_field('contract[title]').value).to eq string
 end
 
 Then("I see the Save button") do

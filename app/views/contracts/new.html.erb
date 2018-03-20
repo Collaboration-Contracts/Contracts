@@ -1,56 +1,59 @@
 <div class="row contract-table-container">
   <div class="col m10 offset-m1">
-    <div class="col l8 m12 contract-title">
-      <div class="input-field">
-        <input type="text" class="validate" name="contract-title">
-        <label for="contract-title">Add a Contract Title</label>
+    <%= form_for [@contract] do |f| %>
+      <div class="col l8 m12 contract-title">
+        <div class="input-field">
+          <%= f.text_field :title, class: 'validate' %>
+          <label for="contract-title">Add a Contract Title</label>
+        </div>
       </div>
-    </div>
-    <div class="col l8 m12 contract-description">
-      <div class="input-field">
-        <input type="text" class="validate" name="contract-description">
-        <label for="contract-description">Add a Contract Description</label>
+      <div class="col l8 m12 contract-description">
+        <div class="input-field">
+          <%= f.text_field :description, class: 'validate' %>
+          <label for="contract-description">Add a Contract Description</label>
+        </div>
       </div>
-    </div>
-    <table class="contract-table striped bordered" border='1'>
-      <thead>
-        <tr>
-          <th></th>
-          <% ROLES.each do |roleName,roleDetails| %>
-            <th>
-              <%= roleName %>
-              <div class="icon-container">
-                <a class='material-icons'>info</a>
-                <span class="role-tooltiptext"><strong><%= roleDetails[:title] %></strong><br><%= roleDetails[:action] %></span>
-              </div>
-            </th>
-          <% end %>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% 10.times do %>
+      <table class="contract-table striped bordered" border='1'>
+        <thead>
           <tr>
-            <td><textarea placeholder="Add a line item.."></textarea></td>
-            <% ROLES.length.times do %>
-              <td><textarea></textarea></td>
+            <th></th>
+            <% ROLES.each do |roleName,roleDetails| %>
+              <th>
+                <%= roleName %>
+                <div class="icon-container">
+                  <a class='material-icons'>info</a>
+                  <span class="role-tooltiptext"><strong><%= roleDetails[:title] %></strong><br><%= roleDetails[:action] %></span>
+                </div>
+              </th>
             <% end %>
           </tr>
+        </thead>
+
+        <tbody>
+          <% 10.times do %>
+            <tr>
+              <td><textarea placeholder="Add a line item.."></textarea></td>
+              <% ROLES.length.times do %>
+                <td><textarea></textarea></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="save-contract-options">
+        <% unless current_user %>
+          <div class="user-links">
+            <%= render 'partials/login_modal' %>
+            or
+            <%= render 'partials/reg_modal', :@user => @user %>
+            if you want to
+          </div>
         <% end %>
-      </tbody>
-    </table>
-    <div class="save-contract-options">
-      <% unless current_user %>
-        <div class="user-links">
-          <%= render 'partials/login_modal' %>
-          or
-          <%= render 'partials/reg_modal', :@user => @user %>
-          if you want to
-        </div>
-      <% end %>
-      <%= button_tag 'Save', { disabled: disabled_btn?, id: 'save-contract', class: 'btn waves-effect waves-purple' } %>
+        <div><%=flash[:confirmation_message]%></div>
+        <%= f.submit 'Save', { disabled: disabled_btn?, id: 'save-contract', class: 'btn waves-effect waves-purple' } %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
 
 <script type="text/javascript">

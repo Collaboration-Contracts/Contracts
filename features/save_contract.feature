@@ -18,7 +18,7 @@ Scenario: save is enabled once I login and contract does not refresh
   And I do not see the Login and Register links on the Contract page
   And I do not see the Login and Register links in the nav menu
 
-@dev_ready
+@wip
 Scenario: save contract and display title in my dashboard
   Given I enter 'New Contract' for the contract title
   When I save the contract

@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   validates_length_of   :password, minimum: 6, message: INVALID_PASSWORD
   has_secure_password
+  has_many :contracts
 
   def custom_error_messages
     messages = []

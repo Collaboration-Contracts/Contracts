@@ -25,7 +25,9 @@ end
 
 When("I register with a valid username and password") do
   within('.sidemenu-content'){ click_link('register-modal-link') }
-  fill_in 'reg-username', with: "TheEdge2"
+  # TODO: get cucumber to retry failing test (for slow machines)
+  sleep(1)
+  fill_in 'reg-username', with: "TheEdge"
   fill_in 'reg-password', with: "password"
   click_button("Register")
 end
