@@ -68,6 +68,10 @@
       $('tbody tr').length <= 10 && $('.contract-table').find('tbody').append(emptyRow.clone());
     }
 
+   $(this).on('keyup', function(){
+     $('.saved-contract-flash').hide();
+   })
+
     var $titleInput = $('.contract-title').find('input');
     var $descriptionInput = $('.contract-description').find('input');
 
