@@ -177,3 +177,14 @@ th a:hover ~ .role-tooltiptext {
   font-size: 0;
   line-height: 0;
 }
+
+.save-contract-options {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 10px 0px;
+  #save-contract {
+    margin-left: 10px;
+    font-size: 0.8rem;
+  }
+}

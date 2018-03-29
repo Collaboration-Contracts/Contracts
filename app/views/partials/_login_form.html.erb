@@ -1,0 +1,11 @@
+<%= form_for(:session, url: login_path) do |f| %>
+<div class="username input-field">
+  <%= f.text_field :username, id: 'login-username', class: "validate" %>
+  <%= f.label :username %>
+</div>
+<div class="password input-field">
+  <%= f.text_field :password, id: 'login-password', type: 'password', class: "validate" %>
+  <%= f.label :password, "Password" %>
+</div>
+<%= button_tag "Login", :class => "btn waves-effect waves-purple submit-btn" %>
+<% end %>

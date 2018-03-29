@@ -1,0 +1,11 @@
+<% unless current_user %>
+  <div class="user-links">
+    <%= render 'partials/login_modal' unless on_login? %>
+    <%= or?.html_safe %>
+    <%= (render 'partials/reg_modal', :@user => @user) unless on_reg? %>
+  </div>
+<% else %>
+  <div class='dashboard-link'>
+    <%= link_to 'Dashboard', dashboard_path %>
+  </div>
+<% end %>

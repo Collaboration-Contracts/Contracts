@@ -18,12 +18,14 @@ Scenario: save is enabled once I login and contract does not refresh
   And I do not see the Login and Register links on the Contract page
   And I do not see the Login and Register links in the nav menu
 
+@dev_ready
 Scenario: save contract and display title in my dashboard
   Given I enter 'New Contract' for the contract title
   When I save the contract
   Then I see a saved contract confirmation message
   And I see 'New Contract' in my dashboard
 
+@dev_ready
 Scenario: don't save contract if the title is blank
   Given I enter no contract title
   When I save the contract

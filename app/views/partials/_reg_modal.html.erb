@@ -1,0 +1,10 @@
+<%= link_to 'Register', '#registration-modal', class: 'modal-trigger', id: 'register-modal-link' %>
+<div id="registration-modal" class="modal">
+  <div class="modal-content">
+    <h4 class="modal-title">Registration</h4>
+    <div class="json-flash-container"></div>
+    <div class="register-form">
+      <%= render "partials/register_form", :@user => @user %>
+    </div>
+  </div>
+</div>
